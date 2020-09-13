@@ -65,29 +65,29 @@ number = 9;
 
 ## Simple Declaration Assignment Output<a name = "AssignmentOutput"></a>
 
-TOKEN			LEXEMES
+TOKEN			LEXEMES </br>
 
-KEYWORD		=	int
-IDENTIFIER	=	number
-SEPARATOR	=	;
-IDENTIFIER	=	number
-OPERATOR	=	=
-INTEGER		=	9
-SEPARATOR	=	;
+KEYWORD		=	int</br>
+IDENTIFIER	=	number</br>
+SEPARATOR	=	;</br>
+IDENTIFIER	=	number</br>
+OPERATOR	=	=</br>
+INTEGER		=	9</br>
+SEPARATOR	=	;</br>
 
 
 ## Sample Input File<a nam e= "InputFile"></a>
 
-``` ! Find largest value between two numbers!
-int num1, num2, large$
-if(num1 > num2)
-{
-	large = num1$;
-}
-else
-{
-	large = num2$;
-}
+``` ! Find largest value between two numbers!</br>
+int num1, num2, large$</br>
+if(num1 > num2)</br>
+{</br>
+	large = num1$;</br>
+}</br>
+else</br>
+{</br>
+	large = num2$;</br>
+}</br>
 ```
 
 ## Sample Output File<a name = "OutputFile"></a>
