@@ -40,15 +40,88 @@ endwhile
 
 ## Sample Token List <a name = "SampleTokenList"></a>
 
+TOKENS			Example Lexemes
+
+KEYWORDS 	=	int, float, bool, true, false, if, else, then, endif, while, whileend, do, doend, for, forend, input, output, and, or, not
+IDENTIFIERS 	=	legal identifiers must start with alphabetic character follow by digits, alpha, or $
+SEPARATORS 	=	'(){}[],.:; sp(space)
+OPERATORS 	=	*+-=/><%
+
+
+Additional examples:
+Valid IDENTIFIERS	:  	num, num1, large$, num$1, num2, num2$, a9, ab, ab2, etc...
+Valid Numbers		:	integers whole numbers (1,2,3,...) and reals floats (5.0, 0.9, 1.75, ...)
+Valid Block Comments	:	!  this is a block comment to be ignored by the Lexical Analyzer !
+
 
 
 ## Simple Declaration Assignment Input<a name ="AssignmentInput"></a>
 
+```! Declare and assign a number !
+int number;
+number = 9;
+```
+
+
 ## Simple Declaration Assignment Output<a name = "AssignmentOutput"></a>
+
+TOKEN			LEXEMES
+
+KEYWORD		=	int
+IDENTIFIER	=	number
+SEPARATOR	=	;
+IDENTIFIER	=	number
+OPERATOR	=	=
+INTEGER		=	9
+SEPARATOR	=	;
+
 
 ## Sample Input File<a nam e= "InputFile"></a>
 
+``` ! Find largest value between two numbers!
+int num1, num2, large$
+if(num1 > num2)
+{
+	large = num1$;
+}
+else
+{
+	large = num2$;
+}
+```
+
 ## Sample Output File<a name = "OutputFile"></a>
 
+TOKENS			Lexemes
+
+KEYWORD 	=	 int
+IDENTIFIER 	=	 num1
+SEPARATOR 	=	 ,
+IDENTIFIER 	=	 num2
+SEPARATOR 	=	 ,
+IDENTIFIER 	=	 large$
+KEYWORD 	=	 if
+SEPARATOR 	=	 (
+IDENTIFIER 	=	 num1
+OPERATOR 	=	 >
+IDENTIFIER 	=	 num2
+SEPARATOR 	=	 )
+SEPARATOR 	=	 {
+IDENTIFIER 	=	 large
+OPERATOR 	=	 =
+IDENTIFIER 	=	 num1$
+SEPARATOR 	=	 ;
+SEPARATOR 	=	 }
+KEYWORD 	=	 else
+SEPARATOR 	=	 {
+IDENTIFIER 	=	 large
+OPERATOR 	=	 =
+IDENTIFIER 	=	 num2$
+SEPARATOR 	=	 ;
+SEPARATOR 	=	 }
+
+
 ## Documentation<a name = "documentation"></a>
+
+
 
