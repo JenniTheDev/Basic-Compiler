@@ -1,29 +1,28 @@
 # Compiler Project for CPSC 323, Compilers and Languages, Fall 2020 at CSUF
 
 ## Table Of Contents
+* [Assignment Instructions](#AssignmentInstructions)
+* [Sample Token List](#SampleTokenList)
+* [Simple Declaration Assignment Input] (#AssignmentInput)
+* [Simple Declaration Assignment Output] (#AssignmentOutput)
+* [Sample Input File](#InputFile)
+* [Sample Output File] (#OutputFile)
+* [Documentation](#documentation)
+
+
+
 <a name "Assigment Instructions"></a>
-<a name "Sample Token List"></a>
-<a name "Simple Declaration Assignment Input"></a>
-<a name "Simple Declaration Assignment Output"></a>
-<a name "Sample Input File"></a>
-<a name "Sample Output File"></a>
-<a name "Documentation"></a>
+## Assignment Instructions <a name "AssigmentInstructions"></a>
 
+## Sample Token List <a name "SampleTokenList"></a>
 
+## Simple Declaration Assignment Input<a name "AssignmentInput"></a>
 
+## Simple Declaration Assignment Output<a name "AssignmentOutput"></a>
 
+## Sample Input File<a name "InputFile"></a>
 
-## Assignment Instructions
+## Sample Output File<a name "OutputFile"></a>
 
-## Sample Token List
-
-## Simple Declaration Assignment Input
-
-## Simple Declaration Assignment Output
-
-## Sample Input File
-
-## Sample Output File
-
-## Documentation
+## Documentation<a name "documentation"></a>
 
