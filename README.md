@@ -78,47 +78,47 @@ SEPARATOR	=	;</br>
 
 ## Sample Input File<a nam e= "InputFile"></a>
 
-``` ! Find largest value between two numbers!</br>
-int num1, num2, large$</br>
-if(num1 > num2)</br>
+``` ! Find largest value between two numbers!
+int num1, num2, large$
+if(num1 > num2)
 {</br>
-	large = num1$;</br>
-}</br>
-else</br>
-{</br>
-	large = num2$;</br>
-}</br>
+	large = num1$;
+}
+else
+{
+	large = num2$;
+}
 ```
 
 ## Sample Output File<a name = "OutputFile"></a>
 
-TOKENS			Lexemes
-
-KEYWORD 	=	 int
-IDENTIFIER 	=	 num1
-SEPARATOR 	=	 ,
-IDENTIFIER 	=	 num2
-SEPARATOR 	=	 ,
-IDENTIFIER 	=	 large$
-KEYWORD 	=	 if
-SEPARATOR 	=	 (
-IDENTIFIER 	=	 num1
-OPERATOR 	=	 >
-IDENTIFIER 	=	 num2
-SEPARATOR 	=	 )
-SEPARATOR 	=	 {
-IDENTIFIER 	=	 large
-OPERATOR 	=	 =
-IDENTIFIER 	=	 num1$
-SEPARATOR 	=	 ;
-SEPARATOR 	=	 }
-KEYWORD 	=	 else
-SEPARATOR 	=	 {
-IDENTIFIER 	=	 large
-OPERATOR 	=	 =
-IDENTIFIER 	=	 num2$
-SEPARATOR 	=	 ;
-SEPARATOR 	=	 }
+TOKENS			Lexemes</br>
+</br>
+KEYWORD 	=	 int</br>
+IDENTIFIER 	=	 num1</br>
+SEPARATOR 	=	 ,</br>
+IDENTIFIER 	=	 num2</br>
+SEPARATOR 	=	 ,</br>
+IDENTIFIER 	=	 large$</br>
+KEYWORD 	=	 if</br>
+SEPARATOR 	=	 (</br>
+IDENTIFIER 	=	 num1</br>
+OPERATOR 	=	 ></br>
+IDENTIFIER 	=	 num2</br>
+SEPARATOR 	=	 )</br>
+SEPARATOR 	=	 {</br>
+IDENTIFIER 	=	 large</br>
+OPERATOR 	=	 =</br>
+IDENTIFIER 	=	 num1$</br>
+SEPARATOR 	=	 ;</br>
+SEPARATOR 	=	 }</br>
+KEYWORD 	=	 else</br>
+SEPARATOR 	=	 {</br>
+IDENTIFIER 	=	 large</br>
+OPERATOR 	=	 =</br>
+IDENTIFIER 	=	 num2$</br>
+SEPARATOR 	=	 ;</br>
+SEPARATOR 	=	 }</br>
 
 
 ## Documentation<a name = "documentation"></a>
