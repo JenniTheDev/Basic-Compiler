@@ -9,7 +9,7 @@ namespace CompilerProject {
 
         string userChoice;
         string fileToRead;
-       // string[] lines;
+        List<string> lineList = new List<string>();
         string line;
 
         // TODO: remove unneeded comments when done with Inputs
@@ -20,18 +20,17 @@ namespace CompilerProject {
             Console.WriteLine("Choose File or User: ");
             userChoice = Console.ReadLine();
 
-            try {
-                if (userChoice == "File" || userChoice == "file") {
-                    UserEnterFileName();
-                } 
-                if (userChoice == "User" || userChoice == "user") {
-
-                    // TODO: write function to get user input
-                    Console.WriteLine("User selected");
-                }
+            if (userChoice == "File" || userChoice == "file") {
+                UserEnterFileName();
+                return;
             }
-            catch (IOException e) {
-                Console.WriteLine("Wrong Selection");
+            if (userChoice == "User" || userChoice == "user") {
+                // TODO: write method to input & save user input
+                Console.WriteLine("User selected");
+                return;
+            } else {
+                Console.WriteLine("That didn't work, Let's try again: ");
+                ChooseInputFromFileOrUser();
             }
         }
 
@@ -40,27 +39,36 @@ namespace CompilerProject {
 
             Console.WriteLine("Enter the file location");
             fileToRead = Console.ReadLine();
-           // Console.WriteLine(fileToRead);
             ReadInFile(@fileToRead);
         }
 
-        //This works as it is
-        public void ReadInFile(string fileName) {
 
+        public void ReadInFile(string fileName) {
             try {
-                using (var lines = new StreamReader(fileName)) {
-                    Console.WriteLine(lines.ReadToEnd());
+                using (StreamReader streamReader = new StreamReader(@fileName)) {
+                    while ((line = streamReader.ReadLine()) != null)
+                        if (line[0] != '!') {
+                            lineList.Add(line);
+                            // remove when done testing stuff
+                            Console.WriteLine(line);
+                        }
                 }
             }
-            catch (IOException e) {
+             catch (IOException e) {
                 Console.WriteLine("The File could not be read: ");
                 Console.WriteLine(e.Message);
             }
         }
 
         public void FormatIntoPiecs() {
-            // TODO: make this function format both the user input and the file input into it's parts to be tokenized
+             // TODO: make this function format both the user input and the file input into it's parts to be tokenized
         }
-
     }
 }
+
+
+
+
+// TODO: make function that take a line and makes it into a list of broken up words
+// List of words function can be used for both of the inputs
+
