@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace CompilerProject {
-    class Inputs : Program {
+    class Inputs  {
 
         string userChoice;
         string fileToRead;
