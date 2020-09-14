@@ -15,11 +15,11 @@ namespace CompilerProject {
 
 
 
-            //TODO: Write a function that reads in a file 
-
-            //TODO: Write a function that asks for user input to compile
+            // TODO:  function remove uncessary symbols 
 
             //TODO: FSM
+
+            //TODO: Outputs
 
 
 
