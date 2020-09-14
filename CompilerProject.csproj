@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="C:\Users\jenni\Documents\GameDev\CSUF323_Compiler\Program.cs" Link="Program.cs" />
+    <Compile Include="C:\Users\jenni\Documents\GameDev\CSUF323_Compiler\Inputs.cs" Link="Inputs.cs" />
+  </ItemGroup>
+
+</Project>
