@@ -20,9 +20,7 @@ namespace JenPile {
 
         // TODO: remove unneeded comments when done with Inputs
 
-        //TODO: Constructor for inputs 
-        // THis is constructor 
-        public Inputs() { }
+      
 
         // This works
 
@@ -34,19 +32,7 @@ namespace JenPile {
             }
         }
 
-        public void ChooseInputFromFileOrUser() {
-            Console.WriteLine("Compile from File or User Input?");
-            Console.WriteLine("Choose File or User: ");
-            userChoice = Console.ReadLine();
-
-
-                ReadInUserInput();
-                return;
-            } else {
-                Console.WriteLine("That didn't work, Let's try again: ");
-                ChooseInputFromFileOrUser();
-            }
-        }
+        
 
         // This works
         public void UserEnterFileName() {
@@ -61,16 +47,9 @@ namespace JenPile {
             try {
                 using(StreamReader streamReader = new StreamReader(@fileName)) {
                     while((line = streamReader.ReadLine()) != null) {
-                        // For now, moved this to it's own function
-                        // if I add a line, and add to lineList, is lineList passed by reference? I am pretty sure it is
+                        
                         inputs.Add(line);
-                        //BreakLineIntoIndividualParts(line);
-                        //if (line[0] != '!') {
-                        //    string[] tempLine = line.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                        //    foreach (string s in tempLine) {
-                        //        lineList.Add(s);
-                        //    }
-                        // }
+                        
                     }
                 }
             } catch(IOException e) {
@@ -103,7 +82,7 @@ namespace JenPile {
             } while(line != null);
         }
         public void FormatIntoPiecs() {
-            // TODO: make this function format both the user input and the file input into it's parts to be tokenized
+            // TODO: make this function  it's own class to format both the user input and the file input into it's parts to be tokenized
         }
     }
 }
