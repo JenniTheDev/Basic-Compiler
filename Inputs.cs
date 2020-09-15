@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
+
 namespace JenPile {
     class Inputs {
 
@@ -19,6 +20,10 @@ namespace JenPile {
 
         // TODO: remove unneeded comments when done with Inputs
 
+        //TODO: Constructor for inputs 
+        // THis is constructor 
+        public Inputs() { }
+
         // This works
 
         public Inputs() { }
@@ -34,11 +39,7 @@ namespace JenPile {
             Console.WriteLine("Choose File or User: ");
             userChoice = Console.ReadLine();
 
-            if(userChoice.ToUpper() == "FILE") {
-                UserEnterFileName();
-                return;
-            }
-            if(userChoice == "User" || userChoice == "user") {
+
                 ReadInUserInput();
                 return;
             } else {
@@ -111,4 +112,16 @@ namespace JenPile {
 
 
 
+
+// until end of file
+// or end of user input
+// read in all the input into a list and then clean it all up
+// entire file should be a giant list 
+// 
+// list is never cleared if we use another file or input 
+// accepts user input until enter is pressed twice 
+// don't tightly couple things by passing the same list around
+// new class for processing
+// input class only for input thats in the main
+// 
 
