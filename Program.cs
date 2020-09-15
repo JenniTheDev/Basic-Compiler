@@ -1,32 +1,29 @@
 ﻿using System;
 
-namespace CompilerProject {
+namespace JenPile {
     class Program {
         static void Main(string[] args) {
+            string fileToCompile = null;
 
-            // I don't know if this is really the right way to start off my program
-            // But it currently works starting it this way
-            var inputToCompile = new Inputs();
-                        
-            inputToCompile.ChooseInputFromFileOrUser();
-            
-                        
+            for(int i = 0; i < args.Length; i++) {
+                if((args[i] == "-c") && (i + 1 < args.Length) && (args[i + 1] != null)) {
+                    // Example: CSUF323_Compiler.exe -c helloworld.jen 
+                    fileToCompile = args[i + 1];
+                }
+            }
 
+            Inputs input = new Inputs();
+            if(fileToCompile != null) {
+                input.ReadInFile(fileToCompile);
+            } else {
+                input.ReadInUserInput();
+            }
+        }        
 
+        // TODO: Function remove uncessary symbols 
 
+        //TODO: FSM
 
-            // TODO:  function remove uncessary symbols 
-
-            //TODO: FSM
-
-            //TODO: Outputs
-
-
-
-          
-
-
-            
-        }
+        //TODO: Outputs
     }
 }
