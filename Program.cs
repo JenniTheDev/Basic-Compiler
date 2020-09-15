@@ -7,10 +7,10 @@ namespace CompilerProject {
             // I don't know if this is really the right way to start off my program
             // But it currently works starting it this way
             var inputToCompile = new Inputs();
-
+                        
             inputToCompile.ChooseInputFromFileOrUser();
             
-            
+                        
 
 
 
