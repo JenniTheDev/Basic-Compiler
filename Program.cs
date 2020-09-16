@@ -20,7 +20,7 @@ namespace JenPile {
             }
         }        
 
-        // TODO: Function remove uncessary symbols 
+       //TODO: function to handle separators 
 
         //TODO: FSM
 

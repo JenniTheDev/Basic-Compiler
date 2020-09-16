@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Vast\\.nuget\\packages\\": {}
+    "C:\\Users\\jenni\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Dev\\Projects\\CSUF323_Compiler\\CSUF323_Compiler.csproj",
+      "projectUniqueName": "C:\\Users\\jenni\\Documents\\GameDev\\CSUF323_Compiler\\CSUF323_Compiler.csproj",
       "projectName": "Jenni",
-      "projectPath": "E:\\Dev\\Projects\\CSUF323_Compiler\\CSUF323_Compiler.csproj",
-      "packagesPath": "C:\\Users\\Vast\\.nuget\\packages\\",
-      "outputPath": "E:\\Dev\\Projects\\CSUF323_Compiler\\obj\\",
+      "projectPath": "C:\\Users\\jenni\\Documents\\GameDev\\CSUF323_Compiler\\CSUF323_Compiler.csproj",
+      "packagesPath": "C:\\Users\\jenni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jenni\\Documents\\GameDev\\CSUF323_Compiler\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Vast\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jenni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
