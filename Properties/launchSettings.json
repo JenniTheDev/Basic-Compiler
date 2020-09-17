@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CSUF323_Compiler": {
+      "commandName": "Project",
+      "commandLineArgs": "-c HelloWorld.jen"
+    }
+  }
+}

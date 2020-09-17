@@ -13,16 +13,21 @@ namespace JenPile {
             }
 
             InputCollector input = new InputCollector();
+            Lexer lex = new Lexer();
+
             if(fileToCompile != null) {
                 input.ReadInFile(fileToCompile);
             } else {
                 input.ReadInUserInput();
             }
+
+            lex.LexInput(input.Inputs);
+
+            lex.PrintTokens(lex.LexInput(input.Inputs));
         }        
 
-      
         //TODO: FSM
 
-        //TODO: Outputs
+        // TODO: Outputs
     }
 }

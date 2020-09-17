@@ -41,6 +41,7 @@ namespace JenPile {
             do {
                 line = Console.ReadLine();
                 if (line.Length == 0) {
+                    inputs.Add("\n");
                     break;
                 }
                 inputs.Add(line);

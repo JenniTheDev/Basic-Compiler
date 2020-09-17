@@ -5,82 +5,82 @@ using System.Text.RegularExpressions;
 
 namespace JenPile {
     class Lexer {
-        const string keywordsPattern = @"(int)|(float)|(bool)|(true)";
-        const string seperatorsPattern = @";\(\)\[\]\{\},.:";
-        const string operatorsPattern = @"\+-<>\*/";
+        const string separatorPattern = @";\(\)\[\]\{\},.:";
+        const string identifierPattern = @"^[A-Z]\w|\$";
+        const string floatPattern = @"^\d+\.\d+$";
+        const string integerPattern = @"^\d+$";
 
-        private readonly Regex keywords = new Regex(keywordsPattern, RegexOptions.IgnoreCase);
-        private readonly Regex separators = new Regex(seperatorsPattern, RegexOptions.IgnoreCase);
-        private readonly Regex operators = new Regex(operatorsPattern, RegexOptions.IgnoreCase);
+        private readonly Regex separatorRgx = new Regex(separatorPattern, RegexOptions.IgnoreCase);
+        private readonly Regex identifierRgx = new Regex(identifierPattern, RegexOptions.IgnoreCase);
+        private readonly Regex floatRgx = new Regex(floatPattern);
+        private readonly Regex integerRgx = new Regex(integerPattern);
 
+        #region Properties
         public List<Token> Tokens { get; private set; } = new List<Token>();
+        #endregion
 
         #region Constructor
         public Lexer() { }
         #endregion
 
         #region Class Methods
-        public void LexInput(List<String> input) {
-            StringBuilder lineToCheck = new StringBuilder();
-            bool matched = false;
-            bool commentSwitch = false;
-            foreach(var line in input) {
-                for (int i = 0; i < line.Length; i++) {
-                    // check if this is correct
-                    //  RemoveComment(commentSwitch, line[i]);
-                    // Original Here
-                    if (line[i] == '!' && !commentSwitch) {
-                        commentSwitch = true;
-                        continue;
-                    }
-                    if (line[i] == '!' && commentSwitch) {
-                        commentSwitch = false;
-                        continue;
-                    }
+        public List<Token> LexInput(List<string> input) {
+            List<Token> tokens = new List<Token>();
+            StringBuilder evalLine = new StringBuilder();
+            bool evalOff = false;
+            
+            foreach(string line in input) {
+                foreach (char c in line) { 
+                // Turn evaluation off during comments
+                if(c == '!') {
+                    evalOff = !evalOff;
+                    continue;
+                }
+                if (evalOff) { continue; }
 
-                    if (commentSwitch) {
-                        Console.WriteLine("switch off");
-                        continue;
+                    Match separatorCheck = separatorRgx.Match(c.ToString());
+                    if (separatorCheck.Success) {
+                        //We hit a seperator, back up and evaluate what is before it & add both as tokens
+                        if (evalLine.Length > 0) {
+                            string tokenToEval = evalLine.ToString();
+                            TokenType type;
+
+                            if (TokenDictionary.Tokens.TryGetValue(tokenToEval, out type)) {
+                            } else if (floatRgx.IsMatch(tokenToEval)) {
+                                type = TokenType.FLOAT;
+
+                            } else if (integerRgx.IsMatch(tokenToEval)) {
+                                type = TokenType.INTEGER;
+
+                            } else if (identifierRgx.IsMatch(tokenToEval)) {
+                                type = TokenType.IDENTIFIER;
+                            } else {
+                                type = TokenType.UNDEFINED;
+                            }
+                            tokens.Add(new Token(type, tokenToEval));
+                        }
+                        tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
+                        evalLine.Clear();
+                    } else {
+                        evalLine.Append(c);
                     }
-                    lineToCheck.Append(line[i]);
-                    Console.WriteLine(lineToCheck);
-
-                    if (keywords.Match(lineToCheck.ToString()).Success) {
-                        matched = true;
-                        Console.WriteLine("match keyword");
-                        Tokens.Add(new Token(TokenType.KEYWORD, lineToCheck.ToString()));
-                    } else if (separators.Match(lineToCheck.ToString()).Success) {
-                        matched = true;
-                        Tokens.Add(new Token(TokenType.SEPARATOR, lineToCheck.ToString()));
-                    } else if (operators.Match(lineToCheck.ToString()).Success) {
-                        matched = true;
-                        Tokens.Add(new Token(TokenType.OPERATOR, lineToCheck.ToString()));
-                    }
-
-                    if (matched) {
-                        lineToCheck.Clear();
-                        matched = false;
-                    }
-
-
                 }
             }
+            return tokens;
         }
+
+
+        //TODO: Remove. For Testing purposes
+
+        public void PrintTokens(List<Token> tokens) {
+            foreach(Token token in tokens) {
+                Console.WriteLine($"{token.Type} = {token.Value}");
+            }
+        }
+
         #endregion
 
-        //public void RemoveComment(bool comSwitch, char check) {
-        //    if (check == '!' && !comSwitch) {
-        //        comSwitch = true;
-        //        continue;
-        //    }
-        //    if (check == '!' && comSwitch) {
-        //        comSwitch = false;
-        //        continue;
-        //    }
-        //    if (comSwitch) {
-        //        continue;
-        //    }
-        //}
+        
 
     }
 }

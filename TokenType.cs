@@ -6,6 +6,7 @@
        SEPARATOR,
        OPERATOR,
        INTEGER,
-       FLOAT
+       FLOAT,
+       UNDEFINED
     }   
 }
