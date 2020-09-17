@@ -12,7 +12,7 @@ namespace JenPile {
                 }
             }
 
-            Inputs input = new Inputs();
+            InputCollector input = new InputCollector();
             if(fileToCompile != null) {
                 input.ReadInFile(fileToCompile);
             } else {
@@ -20,8 +20,7 @@ namespace JenPile {
             }
         }        
 
-       //TODO: function to handle separators 
-
+      
         //TODO: FSM
 
         //TODO: Outputs
