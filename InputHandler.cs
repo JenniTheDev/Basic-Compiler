@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace JenPile {
-    class Separate {
+    class InputHandler {
+
+        // Remove commented lines
+
+        //divide up by spaces
+
+        //move all seperators and operators to their own lines 
+
+        // list of broken up input gets sent to FSM
+
+
+
+
 
         string separators = @"(;)";
 

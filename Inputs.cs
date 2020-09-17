@@ -34,10 +34,7 @@ namespace JenPile {
             try {
                 using (StreamReader streamReader = new StreamReader(@fileName)) {
                     while ((line = streamReader.ReadLine()) != null) {
-                        if (line[0] != '!') {
-                            inputs.Add(line);
-                        }
-                        
+                            inputs.Add(line);     
                        // inputs.ForEach(Console.WriteLine);
                     }
                 }
@@ -49,12 +46,9 @@ namespace JenPile {
 
         public void ReadInUserInput() {
             Console.WriteLine("Type what you would like compiled, press ctrl-z to exit:");
-
             do {
                 line = Console.ReadLine();
                 inputs.Add(line);
-
-
             }
             while (line != null);
         }
