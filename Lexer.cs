@@ -4,8 +4,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace JenPile {
-    class Lexer {
-        const string separatorPattern = @";\(\)\[\]\{\},.:";
+    public class Lexer {
+        const string separatorPattern = @"[;\s:()\[\]{},]+";
         const string identifierPattern = @"^[A-Z]\w|\$";
         const string floatPattern = @"^\d+\.\d+$";
         const string integerPattern = @"^\d+$";
@@ -28,19 +28,19 @@ namespace JenPile {
             List<Token> tokens = new List<Token>();
             StringBuilder evalLine = new StringBuilder();
             bool evalOff = false;
-            
-            foreach(string line in input) {
-                foreach (char c in line) { 
-                // Turn evaluation off during comments
-                if(c == '!') {
-                    evalOff = !evalOff;
-                    continue;
-                }
-                if (evalOff) { continue; }
+
+            foreach (string line in input) {
+                foreach (char c in line) {
+                    // Turning evaluation off during comments
+                    if (c == '!') {
+                        evalOff = !evalOff;
+                        continue;
+                    }
+                    if (evalOff) { continue; }
 
                     Match separatorCheck = separatorRgx.Match(c.ToString());
                     if (separatorCheck.Success) {
-                        //We hit a seperator, back up and evaluate what is before it & add both as tokens
+                        // We've hit a separator, evaluate the line, & add it as a token with the separator
                         if (evalLine.Length > 0) {
                             string tokenToEval = evalLine.ToString();
                             TokenType type;
@@ -51,10 +51,10 @@ namespace JenPile {
 
                             } else if (integerRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.INTEGER;
-
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.IDENTIFIER;
                             } else {
+                                // Should throw an error if this hits
                                 type = TokenType.UNDEFINED;
                             }
                             tokens.Add(new Token(type, tokenToEval));
@@ -69,18 +69,13 @@ namespace JenPile {
             return tokens;
         }
 
-
-        //TODO: Remove. For Testing purposes
-
+        //TODO: Remove. For Testing Purposes
         public void PrintTokens(List<Token> tokens) {
-            foreach(Token token in tokens) {
+            foreach (Token token in tokens) {
                 Console.WriteLine($"{token.Type} = {token.Value}");
             }
         }
-
         #endregion
-
-        
-
     }
 }
+
