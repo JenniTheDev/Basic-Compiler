@@ -7,8 +7,8 @@ namespace JenPile {
     public class Lexer {
         const string separatorPattern = @"[;\s:()\[\]{},]+";
         const string identifierPattern = @"^[A-Z]\w|\$";
-        const string floatPattern = @"^\d+\.\d+$";
-        const string integerPattern = @"^\d+$";
+        const string floatPattern = @"^-?\d+\.\d+$";
+        const string integerPattern = @"^-?\d+$";
 
         private readonly Regex separatorRgx = new Regex(separatorPattern, RegexOptions.IgnoreCase);
         private readonly Regex identifierRgx = new Regex(identifierPattern, RegexOptions.IgnoreCase);

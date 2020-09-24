@@ -10,7 +10,7 @@ namespace JenPile {
 
             for (int i = 0; i < args.Length; i++) {
                 if ((args[i] == "-c") && (i + 1 < args.Length) && (args[i + 1] != null)) {
-                    // Example: CSUF323_Compiler.exe -c helloworld.jen 
+                    // Example: CSUF323_Compiler.exe -c HelloWorld.jen 
                     fileToCompile = args[i + 1];
                 }
             }

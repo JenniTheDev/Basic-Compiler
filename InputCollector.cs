@@ -40,7 +40,7 @@ namespace JenPile {
         }
 
         public void ReadInUserInput() {
-            Console.WriteLine("Type what you would like compiled, press ctrl-z to exit:");
+            Console.WriteLine("Type what you would like compiled, press enter twice to exit:");
             do {
                 line = Console.ReadLine();
                 if (line.Length == 0) {
