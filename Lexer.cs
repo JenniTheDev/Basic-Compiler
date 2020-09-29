@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -70,9 +71,11 @@ namespace JenPile {
         }
 
         //TODO: Remove. For Testing Purposes
+
         public void PrintTokens(List<Token> tokens) {
             foreach (Token token in tokens) {
                 Console.WriteLine($"{token.Type} = {token.Value}");
+                System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
             }
         }
         #endregion
