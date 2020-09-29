@@ -123,5 +123,6 @@ SEPARATOR 	=	 }</br>
 
 ## Documentation<a name = "documentation"></a>
 
+[View Documentation](https://jenniferafelton.github.io/CSUF323_Compiler/JfeltonCompilerDocumentation.pdf "PDF of Documentation")
 
 
