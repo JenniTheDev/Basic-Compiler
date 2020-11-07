@@ -1,17 +1,21 @@
 # Compiler Project for Compilers and Languages, Fall 2020 at CSUF
 
 ## Table Of Contents
-* [Assignment Instructions](#AssignmentInstructions)
+* [Assignment Instructions: Lexical Analyzer](#AssignmentInstructionsPartOne)
 * [Sample Token List](#SampleTokenList)
 * [Simple Declaration Assignment Input](#AssignmentInput)
 * [Simple Declaration Assignment Output](#AssignmentOutput)
 * [Sample Input File](#InputFile)
 * [Sample Output File](#OutputFile)
-* [Documentation](#documentation)
+* [Documentation Part One](#documentation)
+* [Assignment Instructions: Syntax Analyzer](#AssignmentInstructionsPartTwo)
+* [Syntax Analyzer Rules](#SyntaxRules)
 
 
 
-## Assignment Instructions <a name = "AssigmentInstructions"></a>
+## Assignment Instructions <a name = "AssigmentInstructionsPartOne"></a>
+
+###Part 1
 The first assignment is to write a lexical analyzer (lexer)
 You can build your entire lexer using a FSM , Or build using at least FSMs for
 identifier, integer and real (the rest can be written ad-hoc/procedural) but YOU
@@ -36,7 +40,7 @@ while not finished (i.e. not end of the source file) do:
 call the lexer for a token
 print the token and lexeme
 endwhile 
-
+</br></br>
 
 ## Sample Token List <a name = "SampleTokenList"></a>
 
@@ -124,5 +128,43 @@ SEPARATOR 	=	 }</br>
 ## Documentation<a name = "documentation"></a>
 
 [View Documentation](https://jenniferafelton.github.io/CSUF323_Compiler/JfeltonCompilerDocumentation.pdf "PDF of Documentation")
+</br></br>
 
+## Assignment Instructions: Syntax Analyzer<a name = "AssignmentInstructionsPartTwo"></a>  </br>
+The second assignment is to write a syntax analyzer. You may use any top-down parser such as a RDP, a
+predictive recursive descent parser or a table driven predictive parser. <br>
+</br>
+The parser should print to an output file the tokens, lexemes and the production rules used;
+That is, first, output the token and lexeme found like the output example below.
+Then, print out all productions rules used for analyzing this token.
+For more points, print out the parse tree used for analyzing the tokens.
+Note: - a simple way to do it is to have a “print statement” at the beginning of each function that will print
+the production rule.
+ - It would be a good idea to have a “switch” with the “print statement” so that you can turn it on or off. 
+ - Then do the While and single If statements next for extra points. 
+ - Integrate your code with the lexer() or functions generated in the assignment 1 to get more points. 
+ - Error handling: if a syntax error occurs, your parser should generate a meaningful error message, such as
+token, lexeme, line number, and error type etc.
+ - Then, your program may exit or you may continue for further analysis. 
+ </br> </br?
+
+
+# Syntax Analyzer Rules <a name = "SyntaxRules"></a>  </br>
+</br>
+Do the arithmetic expressions first using these rules:<br>
+<Expression> -> <Expression> + <Term> | <Expression> - <Term> | <Term> </br>
+<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor> </br>
+<Factor> -> ( <Expression> ) | <ID> | <Num> </br>
+<ID> -> id </br>
+*the <Num> rule is OPTIONAL </br> </br>
+	
+Then do the Assignment statement using these rules:</br>
+<Statement> -> <Assign> </br>
+<Assign> -> <ID> = <Expression>; </br>
+*using a semicolon ; at the end of the rule is OPTIONAL </br>
+	Then do the single Declarative statement using these rules: </br></br>
+<Statement> -> <Declarative> </br>
+<Declarative> -> <Type> <ID> </br>
+ <Type> -> bool | float | int </br>
+*using a semicolon ; at the end of the rule is OPTIONAL  </br>
 
