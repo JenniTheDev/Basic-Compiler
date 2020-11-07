@@ -146,17 +146,17 @@ the production rule.
  - Error handling: if a syntax error occurs, your parser should generate a meaningful error message, such as
 token, lexeme, line number, and error type etc.
  - Then, your program may exit or you may continue for further analysis. 
- </br> </br?
+ </br> </br>
 
 
 # Syntax Analyzer Rules <a name = "SyntaxRules"></a>  </br>
 </br>
 Do the arithmetic expressions first using these rules:<br>
-<Expression> -> <Expression> + <Term> | <Expression> - <Term> | <Term> </br>
-<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor> </br>
-<Factor> -> ( <Expression> ) | <ID> | <Num> </br>
-<ID> -> id </br>
-*the <Num> rule is OPTIONAL </br> </br>
+``<Expression> -> <Expression> + <Term> | <Expression> - <Term> | <Term> </br>``
+``<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor> </br>``
+``<Factor> -> ( <Expression> ) | <ID> | <Num> </br>``
+``<ID> -> id </br>``
+``*the <Num> rule is OPTIONAL ``</br> </br>
 	
 Then do the Assignment statement using these rules:</br>
 <Statement> -> <Assign> </br>
