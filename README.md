@@ -15,7 +15,7 @@
 
 ## Assignment Instructions <a name = "AssigmentInstructionsPartOne"></a>
 
-###Part 1
+
 The first assignment is to write a lexical analyzer (lexer)
 You can build your entire lexer using a FSM , Or build using at least FSMs for
 identifier, integer and real (the rest can be written ad-hoc/procedural) but YOU
@@ -151,7 +151,7 @@ token, lexeme, line number, and error type etc.
 
 # Syntax Analyzer Rules <a name = "SyntaxRules"></a>  </br>
 </br>
-```
+
 Do the arithmetic expressions first using these rules:<br>
 Expression -> Expression + Term | Expression - Term | Term </br>
 Term -> Term * Factor | Term / Factor | Factor </br>
@@ -169,4 +169,5 @@ Statement -> Declarative </br>
 Declarative -> Type ID </br>
 Type -> bool | float | int </br>
 *using a semicolon ; at the end of the rule is OPTIONAL  </br>
-```
+
+* The bottom line is that your program must be able to parse the entire program if it is syntactically correct </br>
