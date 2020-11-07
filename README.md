@@ -152,7 +152,7 @@ token, lexeme, line number, and error type etc.
 # Syntax Analyzer Rules <a name = "SyntaxRules"></a>  </br>
 </br>
 Do the arithmetic expressions first using these rules:<br>
-``<Expression> -> <Expression> + <Term> | <Expression> - <Term> | <Term> </br>``
+`<Expression> -> <Expression> + <Term> | <Expression> - <Term> | <Term> </br>`
 ``<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor> </br>``
 ``<Factor> -> ( <Expression> ) | <ID> | <Num> </br>``
 ``<ID> -> id </br>``
