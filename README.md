@@ -153,19 +153,20 @@ token, lexeme, line number, and error type etc.
 </br>
 ```
 Do the arithmetic expressions first using these rules:<br>
-<Expression> -> <Expression> + <Term\ | \Expression> - <Term> | <Term> </br>
-<Term> -> <Term> * <Factor> | <Term> / <Factor> | <Factor> </br>
-<Factor> -> ( <Expression> ) | <ID> | <Num> </br>
-<ID> -> id </br>
-*the <Num> rule is OPTIONAL </br> </br>
+Expression -> Expression + Term | Expression - Term | Term </br>
+Term -> Term * Factor | Term / Factor | Factor </br>
+Factor -> ( Expression ) | ID | Num </br>
+ID -> id </br>
+*the Num rule is OPTIONAL </br> </br>
 	
 Then do the Assignment statement using these rules:</br>
-<Statement> -> <Assign> </br>
-<Assign> -> <ID> = <Expression>; </br>
+Statement -> Assign </br>
+Assign -> ID = Expression; </br>
 *using a semicolon ; at the end of the rule is OPTIONAL </br>
-	Then do the single Declarative statement using these rules: </br></br>
-<Statement> -> <Declarative> </br>
-<Declarative> -> <Type> <ID> </br>
- <Type> -> bool | float | int </br>
+
+Then do the single Declarative statement using these rules: </br></br>
+Statement -> Declarative </br>
+Declarative -> Type ID </br>
+Type -> bool | float | int </br>
 *using a semicolon ; at the end of the rule is OPTIONAL  </br>
 ```
