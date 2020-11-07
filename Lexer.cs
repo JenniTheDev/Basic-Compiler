@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace JenPile {
     public class Lexer {
-        const string separatorPattern = @"[;\s:()\[\]{},]+";
+        const string separatorPattern = @"[=;\s:()\[\]{},]+";
         const string identifierPattern = @"^[A-Z]\w|\$";
         const string floatPattern = @"^-?\d+\.\d+$";
         const string integerPattern = @"^-?\d+$";
@@ -40,6 +40,7 @@ namespace JenPile {
                     if (evalOff) { continue; }
 
                     Match separatorCheck = separatorRgx.Match(c.ToString());
+                    //  TODO: Can I add the operators as a seperator, but still have them return an operator token?
                     if (separatorCheck.Success) {
                         // We've hit a separator, evaluate the line, & add it as a token with the separator
                         if (evalLine.Length > 0) {
@@ -75,7 +76,7 @@ namespace JenPile {
         public void PrintTokens(List<Token> tokens) {
             foreach (Token token in tokens) {
                 Console.WriteLine($"{token.Type} = {token.Value}");
-                System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
+                // System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
             }
         }
         #endregion
