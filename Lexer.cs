@@ -6,15 +6,20 @@ using System.Text.RegularExpressions;
 
 namespace JenPile {
     public class Lexer {
-        const string separatorPattern = @"[=;\s:()\[\]{},]+";
+        const string separatorPattern = @"[=*+/\-;\s:()\[\]{},]+";
         const string identifierPattern = @"^[A-Z]\w|\$";
         const string floatPattern = @"^-?\d+\.\d+$";
         const string integerPattern = @"^-?\d+$";
+        // Trying this
+        const string operatorPattern = @"[=+_*/]";
+
 
         private readonly Regex separatorRgx = new Regex(separatorPattern, RegexOptions.IgnoreCase);
         private readonly Regex identifierRgx = new Regex(identifierPattern, RegexOptions.IgnoreCase);
         private readonly Regex floatRgx = new Regex(floatPattern);
         private readonly Regex integerRgx = new Regex(integerPattern);
+        // Trying this 
+        private readonly Regex operatorRgx = new Regex(operatorPattern);
 
         #region Properties
         public List<Token> Tokens { get; private set; } = new List<Token>();
@@ -38,10 +43,11 @@ namespace JenPile {
                         continue;
                     }
                     if (evalOff) { continue; }
-
+                    
                     Match separatorCheck = separatorRgx.Match(c.ToString());
                     //  TODO: Can I add the operators as a seperator, but still have them return an operator token?
                     if (separatorCheck.Success) {
+                        
                         // We've hit a separator, evaluate the line, & add it as a token with the separator
                         if (evalLine.Length > 0) {
                             string tokenToEval = evalLine.ToString();
@@ -50,7 +56,6 @@ namespace JenPile {
                             if (TokenDictionary.Tokens.TryGetValue(tokenToEval, out type)) {
                             } else if (floatRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.FLOAT;
-
                             } else if (integerRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
@@ -61,7 +66,14 @@ namespace JenPile {
                             }
                             tokens.Add(new Token(type, tokenToEval));
                         }
-                        tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
+                        // Trying this AND IT WORKS!  
+                        if (operatorRgx.IsMatch(c.ToString())) {
+                            tokens.Add(new Token(TokenType.OPERATOR, c.ToString()));
+                        } else {
+
+                            tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
+                        }
+                        //tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
                         evalLine.Clear();
                     } else {
                         evalLine.Append(c);
