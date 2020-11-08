@@ -18,7 +18,8 @@ namespace JenPile {
             InputCollector input = new InputCollector();
             Lexer lex = new Lexer();
             // Rules for Syntax
-            ArthmeticExpression expression = new ArthmeticExpression();
+            // First expressions
+            Expression expression = new Expression();
 
             if (fileToCompile != null) {
                 input.ReadInFile(fileToCompile);
@@ -31,6 +32,7 @@ namespace JenPile {
             //TODO: Remove. For Demoing
             lex.PrintTokens(lex.LexInput(input.Inputs));
 
+            // expression.
 
 
            

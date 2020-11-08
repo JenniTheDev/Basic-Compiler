@@ -7,7 +7,10 @@ using System.Text.RegularExpressions;
 namespace JenPile {
     public class Lexer {
         const string separatorPattern = @"[=*+/\-;\s:()\[\]{},]+";
-        const string identifierPattern = @"^[A-Z]\w|\$";
+        // currently working for single letters
+        const string identifierPattern = @"[A-Z]";
+        // original working one that didn't do single letters
+        // const string identifierPattern = @"^[A-Z]\w|\$";
         const string floatPattern = @"^-?\d+\.\d+$";
         const string integerPattern = @"^-?\d+$";
         // Trying this
@@ -43,11 +46,10 @@ namespace JenPile {
                         continue;
                     }
                     if (evalOff) { continue; }
-                    
+
                     Match separatorCheck = separatorRgx.Match(c.ToString());
-                    //  TODO: Can I add the operators as a seperator, but still have them return an operator token?
                     if (separatorCheck.Success) {
-                        
+
                         // We've hit a separator, evaluate the line, & add it as a token with the separator
                         if (evalLine.Length > 0) {
                             string tokenToEval = evalLine.ToString();
@@ -60,12 +62,12 @@ namespace JenPile {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.IDENTIFIER;
-                           
+
                             } else {
                                 // Should throw an error if this hits
                                 type = TokenType.UNDEFINED;
                             }
-                                                                           
+
                             tokens.Add(new Token(type, tokenToEval));
                         }
                         // Trying this AND IT WORKS!  

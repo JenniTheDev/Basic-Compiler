@@ -3,8 +3,17 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace JenPile {
-    class ArthmeticExpression {
+    class Expression {
 
+        #region Properties
+
+        #endregion
+
+        #region Constructor
+        public Expression() { }
+        #endregion
+
+        #region Class Methods
         // <Expression> -> <Expression> + <Term>
         // <Expression> -> <Expression> - <Term>
         // <Expression> -> <Term>
@@ -18,6 +27,12 @@ namespace JenPile {
         // <Factor> -> Num
 
         // ID -> id
+
+        // bottom up approach - the first term to be computed will be on the bottom (like multiplying)
+
+        #endregion
+
+       
 
 
 

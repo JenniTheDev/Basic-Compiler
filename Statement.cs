@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace JenPile {
-    class DeclarativeStatement {
+    class Statement {
         // <Statement> -> <Declarative>
         // <Declarative> -> <Type> <ID> 
         // <Type> -> bool
