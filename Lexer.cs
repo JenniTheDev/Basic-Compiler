@@ -60,10 +60,12 @@ namespace JenPile {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.IDENTIFIER;
+                           
                             } else {
                                 // Should throw an error if this hits
                                 type = TokenType.UNDEFINED;
                             }
+                                                                           
                             tokens.Add(new Token(type, tokenToEval));
                         }
                         // Trying this AND IT WORKS!  
