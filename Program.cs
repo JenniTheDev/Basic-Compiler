@@ -18,7 +18,7 @@ namespace JenPile {
             InputCollector input = new InputCollector();
             Lexer lex = new Lexer();
             // Rules for Syntax
-            // First expressions
+            // First pass is expressions
             Expression expression = new Expression();
 
             if (fileToCompile != null) {
@@ -32,7 +32,8 @@ namespace JenPile {
             //TODO: Remove. For Demoing
             lex.PrintTokens(lex.LexInput(input.Inputs));
 
-            // expression.
+            // TODO: Is passing the list of token & value pairs? 
+            expression.Driver(lex.LexInput(input.Inputs));
 
 
            

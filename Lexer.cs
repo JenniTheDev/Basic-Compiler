@@ -70,7 +70,7 @@ namespace JenPile {
 
                             tokens.Add(new Token(type, tokenToEval));
                         }
-                        // Trying this AND IT WORKS!  
+                        // Trying this for part 2 AND IT WORKS!  
                         if (operatorRgx.IsMatch(c.ToString())) {
                             tokens.Add(new Token(TokenType.OPERATOR, c.ToString()));
                         } else {
@@ -95,6 +95,8 @@ namespace JenPile {
                 // System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
             }
         }
+
+
         #endregion
     }
 }
