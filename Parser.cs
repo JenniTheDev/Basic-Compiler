@@ -5,6 +5,9 @@ using System.Text;
 namespace JenPile {
     class Parser {
 
+        private bool printRules = true;
+        Token endOfFile = new Token(TokenType.NONE, "%%");
+
         #region Properties
 
         #endregion
@@ -14,64 +17,131 @@ namespace JenPile {
         #endregion
 
         #region Class Methods
-        // <Expression> -> <Expression> + <Term>
-        // <Expression> -> <Expression> - <Term>
-        // <Expression> -> <Term>
 
-        // <Term> -> <Term> * <Factor>
-        // <Term> -> <Term> / <Factor> 
-        // <Term> -> <Factor> 
+        public void Driver(List<Token> tokenizedInput) {
+            Stack<Token> theStack = new Stack<Token>();
+           // theStack.Push(endOfFile); // Push End of File marker
+           // tokenizedInput.Add(new Token(TokenType.NONE, "%")); // Add End Of String to input string
 
-        // <Factor> -> (Expression)
-        // <Factor> -> ID
-        // <Factor> -> Num
+            //while (theStack != null ?  Maybe I can just make this a function and call it until the input has been checked 
+                foreach (Token t in tokenizedInput) {
+                    if (t.Value != " ") {
+                        theStack.Push(t);
+                    }
+                    if (t.Value == ";") {
+                        ParseStackMath(theStack);
+                    }
+                    // need to get more input from the List
+                }
 
-        // ID -> id
-
-        // bottom up approach - the first term to be computed will be on the bottom (like multiplying)
-
-        // TODO: Is this modifying my token list so that I can't continue to use it? 
-        public List<Token> Driver(List<Token> tokenizedInput) {
-            Stack<String> theStack = new Stack<string>();
-            theStack.Push("%"); // Push End of File marker
-            tokenizedInput.Add(new Token(TokenType.NONE, "%")); // Add End Of String to input string
-            theStack.Push("Some starting symbol here"); // Push start symbol on stack
-
-            while(tokenizedInput.Count != 0 ){ // While the stack is not empty
-                // if top of stack is a terminal token and 
-                // if incoming tokenizendInput[i] == terminal symbol at top of stack {
-                // TODO: I should also make sure that I skip space seperators from my input list - make a method to check
-                //          theStack.Pop();
-                //          go to next tokenizedInput }
-                        //  else error message
-                // else 
-                // {  if table [top of stack , tokenizenInput[i]] has an entry
-                // theStack.Pop(top of stack);
-                // theStack.Push(Table cell contents of [top of stack, tokenizenInput[i]] in reverse order)
-                // else error 
-
+            Console.WriteLine("stack check print");
+            foreach (Token token in theStack) {
+                Console.WriteLine($"{token.Type} = {token.Value} "  ); 
             }
 
-            return tokenizedInput; // return something ? 
+            //}
+
+
         }
+
+
+        public void ParseStackMath(Stack<Token> stackToParse) {
+            Token toCheck = stackToParse.Pop();
+            if (toCheck.Value == ";") {                
+                toCheck = stackToParse.Pop();     // id + (operator + id ) repeating until = or something else
+                if (toCheck.Type == TokenType.IDENTIFIER || toCheck.Type == TokenType.INTEGER || toCheck.Type == TokenType.FLOAT) {
+                    toCheck = stackToParse.Pop();
+                    while (toCheck.Value != "=" && stackToParse != null) {
+                        if (toCheck.Type == TokenType.OPERATOR) {
+                            toCheck = stackToParse.Pop();
+                        } 
+                        if (toCheck.Type == TokenType.IDENTIFIER || toCheck.Type == TokenType.INTEGER || toCheck.Type == TokenType.FLOAT) {
+                            toCheck = stackToParse.Pop();
+                        } 
+                        // else if a wrong thing break? 
+                    }
+                    // rule about expressions ? 
+
+                    if (toCheck.Value == "=") {
+                        Console.WriteLine(" Some rule about Assigning ");
+                        toCheck = stackToParse.Pop();
+                    } 
+
+                    if (toCheck.Type == TokenType.IDENTIFIER) {
+                        Console.WriteLine("Sucessful parse");
+                    }
+
+                       
+
+
+                        
+                    
+                }
+            } 
+            
+            // when hits = -> give expression rule
+            // if no = at end, error
+
+        }
+
+
 
         private void Error() {
             Console.WriteLine("error");
         }
 
+        private void PrintTokenAndLexeme() {
+
+        }
+
+        // What's the point of tokens if we don't use them? 
+        private void PrintSemicolonRule() {
+            if (printRules) {
+                Console.WriteLine("<Assign> -> <Identifier> = <Expression> ; ");
+                Console.WriteLine("<Term> -> <Identifier> <Operator> <Identifier>  ;| <Number> <Operator> <Number> ; ");
+                 Console.WriteLine("<Expression> -> <Term> Something? ");
+
+            }
+        }
+
+
+        void PrintRule() {
+            // print rule is printRules is true
+        }
+
+        //private bool Identifier() {
+        //    bool isIdentifier = false;
+
+        //    if ( // object.token is identifier){
+
+        //    return isIdentifier;
+        //}
+
+        //private bool Assign() {
+
+
+        //}
+
+        private bool Empty() {
+            bool isEmpty = false;
+            if (printRules) {
+                Console.WriteLine("<Empty> -> Epsilon");
+            }
+            return true;
+
+        }
+
+
+
+
+
         #endregion
 
-       
-        // Make a dictionary of table pairs that equal the rule number
-       // <non terminal, terminal> pair
-
-        // call function that takes rule number and prints rule in words 
-        // we only define valid entires. Not able to be looked up? Syntax is wrong
 
 
 
 
 
 
-    }
+    }   
 }
