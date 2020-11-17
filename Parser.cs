@@ -6,7 +6,7 @@ namespace JenPile {
     class Parser {
 
         private bool printRules = true;
-        Token endOfFile = new Token(TokenType.NONE, "%%");
+        // It's the end of the input when the stack and list are empty
 
         #region Properties
 
@@ -20,11 +20,12 @@ namespace JenPile {
 
         public void Driver(List<Token> tokenizedInput) {
             Stack<Token> theStack = new Stack<Token>();
-           // theStack.Push(endOfFile); // Push End of File marker
-           // tokenizedInput.Add(new Token(TokenType.NONE, "%")); // Add End Of String to input string
-
-            //while (theStack != null ?  Maybe I can just make this a function and call it until the input has been checked 
+            // theStack.Push(endOfFile); // Push End of File marker
+            // tokenizedInput.Add(new Token(TokenType.NONE, "%")); // Add End Of String to input string
+            int count = 0;
+            while (count < tokenizedInput.Count) {  //Maybe I can just make this a function and call it until the input has been checked 
                 foreach (Token t in tokenizedInput) {
+                    count++;
                     if (t.Value != " ") {
                         theStack.Push(t);
                     }
@@ -39,24 +40,29 @@ namespace JenPile {
                 Console.WriteLine($"{token.Type} = {token.Value} "  ); 
             }
 
-            //}
+            }
 
 
         }
 
 
         public void ParseStackMath(Stack<Token> stackToParse) {
+            Console.WriteLine("Starting stack");
             Token toCheck = stackToParse.Pop();
+            Console.WriteLine("popping " + toCheck.Type);
             if (toCheck.Value == ";") {                
                 toCheck = stackToParse.Pop();     // id + (operator + id ) repeating until = or something else
                 if (toCheck.Type == TokenType.IDENTIFIER || toCheck.Type == TokenType.INTEGER || toCheck.Type == TokenType.FLOAT) {
                     toCheck = stackToParse.Pop();
+                    Console.WriteLine("popping " + toCheck.Type);
                     while (toCheck.Value != "=" && stackToParse != null) {
                         if (toCheck.Type == TokenType.OPERATOR) {
                             toCheck = stackToParse.Pop();
+                            Console.WriteLine("popping " + toCheck.Type);
                         } 
                         if (toCheck.Type == TokenType.IDENTIFIER || toCheck.Type == TokenType.INTEGER || toCheck.Type == TokenType.FLOAT) {
                             toCheck = stackToParse.Pop();
+                            Console.WriteLine("popping " + toCheck.Type);
                         } 
                         // else if a wrong thing break? 
                     }

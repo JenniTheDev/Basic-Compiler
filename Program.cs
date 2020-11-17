@@ -12,6 +12,7 @@ namespace JenPile {
                 if ((args[i] == "-c") && (i + 1 < args.Length) && (args[i + 1] != null)) {
                     // Example: CSUF323_Compiler.exe -c HelloWorld.jen 
                     fileToCompile = args[i + 1];
+
                 }
             }
 
@@ -36,13 +37,13 @@ namespace JenPile {
             expression.Driver(lex.LexInput(input.Inputs));
 
 
-           
 
-           
 
-            
 
-            
+
+
+
+
         }
     }
 }
