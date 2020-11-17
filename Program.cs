@@ -19,7 +19,7 @@ namespace JenPile {
             Lexer lex = new Lexer();
             // Rules for Syntax
             // First pass is expressions
-            Expression expression = new Expression();
+            Parser expression = new Parser();
 
             if (fileToCompile != null) {
                 input.ReadInFile(fileToCompile);

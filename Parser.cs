@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace JenPile {
-    class Expression {
+    class Parser {
 
         #region Properties
 
         #endregion
 
         #region Constructor
-        public Expression() { }
+        public Parser() { }
         #endregion
 
         #region Class Methods
@@ -62,7 +62,11 @@ namespace JenPile {
         #endregion
 
        
+        // Make a dictionary of table pairs that equal the rule number
+       // <non terminal, terminal> pair
 
+        // call function that takes rule number and prints rule in words 
+        // we only define valid entires. Not able to be looked up? Syntax is wrong
 
 
 
