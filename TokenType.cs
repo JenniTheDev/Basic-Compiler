@@ -8,6 +8,11 @@
        INTEGER,
        FLOAT,
        ENDOFFILE,
+
+       // For parsing for now
+       EXPRESSION,
+       ASSIGNMENT, 
+
        UNDEFINED
     }   
 }
