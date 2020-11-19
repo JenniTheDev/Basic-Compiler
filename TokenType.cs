@@ -7,6 +7,7 @@
        OPERATOR,
        INTEGER,
        FLOAT,
+       ENDOFFILE,
        UNDEFINED
     }   
 }
