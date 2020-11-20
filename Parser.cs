@@ -64,15 +64,15 @@ namespace JenPile {
 
 
                 if (theStack[i].Type == TokenType.EXPRESSION) {
-                    if (i > theStack.Count - 1 && theStack[i + 1].Type == TokenType.OPERATOR && theStack[i + 1].Value != "=") {
-                            if (i >= theStack.Count - 2 && theStack[i + 2].Type == TokenType.EXPRESSION) {
-                                theStack.RemoveAt(i);
-                                theStack.RemoveAt(i - 1);
-                                theStack.RemoveAt(i - 2);
-                                theStack.Insert(i, expressionReduction);
-                                Console.WriteLine("expression rule long");
-                            }
-                        
+                    if (i < theStack.Count - 1 && theStack[i + 1].Type == TokenType.OPERATOR && theStack[i + 1].Value != "=") {
+                        if (i < theStack.Count - 2 && theStack[i + 2].Type == TokenType.EXPRESSION) {
+                            theStack.RemoveAt(i);
+                            theStack.Insert(i, expressionReduction);
+                            theStack.RemoveAt(i + 1);
+                            theStack.RemoveAt(i + 1);
+                            Console.WriteLine("expression rule long");
+                        }
+
                     }
                 }
 
