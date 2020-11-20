@@ -23,7 +23,7 @@ namespace JenPile {
 
         public void Driver(List<Token> tokenizedInput) {
             Console.WriteLine("Calling driver");
-            theStack.Add(endOfFile); // Push End of File marker
+            //theStack.Add(endOfFile); // Push End of File marker
             tokenizedInput.Add(endOfFile); // Add End Of String to input string
             foreach (Token input in tokenizedInput) {
                 Token tokenToParse = input;
@@ -53,19 +53,31 @@ namespace JenPile {
             // only a float
             // only an id
             Token expressionReduction = new Token(TokenType.EXPRESSION, "expression");
+            Console.WriteLine("Calling ExpressCheck");
 
             for (int i = 0; i < theStack.Count; i++) {
                 if (theStack[i].Type == TokenType.IDENTIFIER) {
-                    Console.WriteLine("expression rule"); 
+                    Console.WriteLine("expression rule");
                     theStack.RemoveAt(i);
-                    theStack.Add(expressionReduction);
-                }  if (theStack.Count > 2 && theStack[i].Type == TokenType.EXPRESSION && theStack[i-1].Type == TokenType.OPERATOR && theStack[i-2].Type == TokenType.EXPRESSION) {
-                    theStack.RemoveAt(i);
-                    theStack.RemoveAt(i-1);
-                    theStack.RemoveAt(i - 2);
-                    theStack.Add(expressionReduction);
-                    Console.WriteLine("expression rule long");
+                    theStack.Insert(i, expressionReduction);
                 }
+
+
+                if (theStack[i].Type == TokenType.EXPRESSION) {
+                    if (i > theStack.Count - 1 && theStack[i + 1].Type == TokenType.OPERATOR && theStack[i + 1].Value != "=") {
+                            if (i >= theStack.Count - 2 && theStack[i + 2].Type == TokenType.EXPRESSION) {
+                                theStack.RemoveAt(i);
+                                theStack.RemoveAt(i - 1);
+                                theStack.RemoveAt(i - 2);
+                                theStack.Insert(i, expressionReduction);
+                                Console.WriteLine("expression rule long");
+                            }
+                        
+                    }
+                }
+
+
+
 
 
                 //if (theStack.[i].Type == TokenType.IDENTIFIER) {
@@ -95,76 +107,82 @@ namespace JenPile {
             }
         }
         private void CheckForAssignment() {
+            Token assignmentReduction = new Token(TokenType.ASSIGNMENT, "assignment");
+            Console.WriteLine("Calling Assign Check");
+
             // check stack for keyword id = expression then replace w/ assignment
             // check stack for id = expression then replace w/ assignment
-            for (int i = 0; i < theStack.Count; i++) {
-                if (theStack.Count > 2 && theStack[i].Type == TokenType.IDENTIFIER && theStack[i + 1].Value == "=" && theStack[i + 2].Type == TokenType.EXPRESSION) {
-                    Console.WriteLine("It is an assignment");
-                } else if (theStack.Count > 3 && theStack[i].Type == TokenType.KEYWORD && theStack[i].Type == TokenType.IDENTIFIER && theStack[i + 1].Value == "=" && theStack[i + 2].Type == TokenType.EXPRESSION) {
-                    Console.WriteLine("It is an assignment");
+            if (theStack.Count > 2) {
+                for (int i = 0; i < theStack.Count; i++) {
+                    if (theStack[i].Type == TokenType.IDENTIFIER && theStack[i + 1].Value == "=" && theStack[i + 2].Type == TokenType.EXPRESSION && theStack[i + 3].Type == TokenType.ENDOFFILE) {
+                        theStack.RemoveAt(i);
+                        theStack.RemoveAt(i + 1);
+                        theStack.RemoveAt(i + 2);
+                        theStack.Add(assignmentReduction);
+                        Console.WriteLine("Assignment Reduction Happened");
+                    }
                 }
-            }        
-                
-                
             }
 
-            private void Function() {
-                // repeats through everything until end of file
+        }
 
-                // read a token, is it expression, 
+        private void Function() {
+            // repeats through everything until end of file
 
-                // pop statements, say sucessfully parsed for now 
-                // in future would use statements with loops and if eslse 
+            // read a token, is it expression, 
 
-
-            }
-
-            private void Statement() {
-                // statements should always have a ; at the end
-                // declarative ;
-                // check for Assign then ; , pop and replace with statement
-
-                // would eventually handle if, while, do 
-
-
-            }
-
-            private void Declaritive() {
-
-                // a keyword and an id
-
-                // optional keyword id , id , id (recursive to add unlimited id's with commas, no ending comma ?) 
-
-            }
-
-            private void Error() {
-                Console.WriteLine("error");
-            }
-
-            private void PrintTokenAndLexeme() {
-
-            }
-
-            private void PrintRule() {
-                // print rule is printRules is true
-                // Not really needed since I put rules in the functions ? 
-            }
-
-
-
-
-
-
-
-
-            #endregion
-
-
-
-
-
-
+            // pop statements, say sucessfully parsed for now 
+            // in future would use statements with loops and if eslse 
 
 
         }
+
+        private void Statement() {
+            // statements should always have a ; at the end
+            // declarative ;
+            // check for Assign then ; , pop and replace with statement
+
+            // would eventually handle if, while, do 
+
+
+        }
+
+        private void Declaritive() {
+
+            // a keyword and an id
+
+            // optional keyword id , id , id (recursive to add unlimited id's with commas, no ending comma ?) 
+
+        }
+
+        private void Error() {
+            Console.WriteLine("error");
+        }
+
+        private void PrintTokenAndLexeme() {
+
+        }
+
+        private void PrintRule() {
+            // print rule is printRules is true
+            // Not really needed since I put rules in the functions ? 
+        }
+
+
+
+
+
+
+
+
+        #endregion
+
+
+
+
+
+
+
+
     }
+}

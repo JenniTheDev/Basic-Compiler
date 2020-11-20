@@ -2,7 +2,7 @@
   "profiles": {
     "CSUF323_Compiler": {
       "commandName": "Project",
-      "commandLineArgs": "-c HelloWorld.jen"
+      "commandLineArgs": "-c ShortMathTest.jen"
     }
   }
 }
