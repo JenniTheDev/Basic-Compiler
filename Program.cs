@@ -32,7 +32,7 @@ namespace JenPile {
             lex.LexInput(input.Inputs);
 
             //TODO: Remove. For Demoing
-            lex.PrintTokens(lex.LexInput(input.Inputs));
+            // lex.PrintTokens(lex.LexInput(input.Inputs));
 
             // TODO: Is passing the list of token & value pairs? 
             expression.Driver(lex.LexInput(input.Inputs));
