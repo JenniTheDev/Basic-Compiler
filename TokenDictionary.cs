@@ -24,13 +24,13 @@ namespace JenPile {
             { "or", TokenType.KEYWORD },
             { "not", TokenType.KEYWORD },
 
-            { "+", TokenType.OPERATOR },
+            { "+", TokenType.OPERATOR }, 
             { "-", TokenType.OPERATOR },
-            { "=", TokenType.OPERATOR },
+            { "=", TokenType.OPERATOR }, 
             { "/", TokenType.OPERATOR },
             { ">", TokenType.OPERATOR },
             { "<", TokenType.OPERATOR },
-            { "%", TokenType.OPERATOR },
+            { "*", TokenType.OPERATOR },
         };
 
     }

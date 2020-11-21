@@ -1,6 +1,6 @@
 ﻿This is a temporary how to run project until the documentation is done
 
-FSM is not completed but the Compiler workds correctly and splits into tokens
+FSM is not completed but the Compiler works correctly and splits into tokens
 
 to run, go to bin -> Release 
 

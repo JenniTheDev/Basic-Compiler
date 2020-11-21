@@ -6,15 +6,23 @@ using System.Text.RegularExpressions;
 
 namespace JenPile {
     public class Lexer {
-        const string separatorPattern = @"[;\s:()\[\]{},]+";
-        const string identifierPattern = @"^[A-Z]\w|\$";
+        const string separatorPattern = @"[=*+/\-;\s:()\[\]{},]+";
+        // currently working for single letters
+        const string identifierPattern = @"[A-Z]";
+        // original working one that didn't do single letters
+        // const string identifierPattern = @"^[A-Z]\w|\$";
         const string floatPattern = @"^-?\d+\.\d+$";
         const string integerPattern = @"^-?\d+$";
+        // Trying this
+        const string operatorPattern = @"[=+_*/]";
+
 
         private readonly Regex separatorRgx = new Regex(separatorPattern, RegexOptions.IgnoreCase);
         private readonly Regex identifierRgx = new Regex(identifierPattern, RegexOptions.IgnoreCase);
         private readonly Regex floatRgx = new Regex(floatPattern);
         private readonly Regex integerRgx = new Regex(integerPattern);
+        // Trying this 
+        private readonly Regex operatorRgx = new Regex(operatorPattern);
 
         #region Properties
         public List<Token> Tokens { get; private set; } = new List<Token>();
@@ -41,6 +49,7 @@ namespace JenPile {
 
                     Match separatorCheck = separatorRgx.Match(c.ToString());
                     if (separatorCheck.Success) {
+
                         // We've hit a separator, evaluate the line, & add it as a token with the separator
                         if (evalLine.Length > 0) {
                             string tokenToEval = evalLine.ToString();
@@ -49,18 +58,26 @@ namespace JenPile {
                             if (TokenDictionary.Tokens.TryGetValue(tokenToEval, out type)) {
                             } else if (floatRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.FLOAT;
-
                             } else if (integerRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.IDENTIFIER;
+
                             } else {
                                 // Should throw an error if this hits
                                 type = TokenType.UNDEFINED;
                             }
+
                             tokens.Add(new Token(type, tokenToEval));
                         }
-                        tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
+                        // Trying this for part 2 AND IT WORKS!  
+                        if (operatorRgx.IsMatch(c.ToString())) {
+                            tokens.Add(new Token(TokenType.OPERATOR, c.ToString()));
+                        } else {
+
+                            tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
+                        }
+                        //tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
                         evalLine.Clear();
                     } else {
                         evalLine.Append(c);
@@ -75,9 +92,11 @@ namespace JenPile {
         public void PrintTokens(List<Token> tokens) {
             foreach (Token token in tokens) {
                 Console.WriteLine($"{token.Type} = {token.Value}");
-                System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
+                // System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
             }
         }
+
+
         #endregion
     }
 }

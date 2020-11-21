@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace JenPile {
     class Program {
@@ -12,11 +13,15 @@ namespace JenPile {
                 if ((args[i] == "-c") && (i + 1 < args.Length) && (args[i + 1] != null)) {
                     // Example: CSUF323_Compiler.exe -c HelloWorld.jen 
                     fileToCompile = args[i + 1];
+
                 }
             }
 
             InputCollector input = new InputCollector();
             Lexer lex = new Lexer();
+            // Rules for Syntax
+            // First pass is expressions
+            Parser expression = new Parser();
 
             if (fileToCompile != null) {
                 input.ReadInFile(fileToCompile);
@@ -27,15 +32,19 @@ namespace JenPile {
             lex.LexInput(input.Inputs);
 
             //TODO: Remove. For Demoing
-            lex.PrintTokens(lex.LexInput(input.Inputs));
+            // lex.PrintTokens(lex.LexInput(input.Inputs));
 
-           
+            // TODO: Is passing the list of token & value pairs? 
+            expression.Driver(lex.LexInput(input.Inputs));
 
-           
 
-            //TODO: FSM
 
-            //TODO: Outputs
+
+
+
+
+
+
         }
     }
 }
