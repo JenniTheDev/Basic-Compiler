@@ -11,7 +11,8 @@
 
        // For parsing for now
        EXPRESSION,
-       ASSIGNMENT, 
+       ASSIGNMENT,
+       STATEMENT,
 
        UNDEFINED
     }   

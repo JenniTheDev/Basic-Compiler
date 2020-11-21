@@ -7,9 +7,11 @@ namespace JenPile {
     class Parser {
         // toggles printing rules on and off
         private bool printRules = true;
-        private bool check = false;
         List<Token> theStack = new List<Token>();
         Token endOfFile = new Token(TokenType.ENDOFFILE, "%");
+        Token assignmentReduction = new Token(TokenType.ASSIGNMENT, "assignment");
+        Token expressionReduction = new Token(TokenType.EXPRESSION, "expression");
+        Token statementReduction = new Token(TokenType.STATEMENT, "statement");
 
         #region Properties
 
@@ -31,6 +33,7 @@ namespace JenPile {
                     Shift(tokenToParse);
                     Reduce();
                 }
+
             }
 
         }
@@ -50,13 +53,19 @@ namespace JenPile {
         }
 
         private void CheckForExpression() {
-            Token expressionReduction = new Token(TokenType.EXPRESSION, "expression");
             Console.WriteLine("Calling ExpressCheck");
 
             for (int i = 0; i < theStack.Count; i++) {
-                if (theStack[i].Type == TokenType.IDENTIFIER) {
+                if (theStack[i].Type == TokenType.IDENTIFIER || theStack[i].Type == TokenType.ASSIGNMENT) {
                     if (i < theStack.Count - 1 && theStack[i + 1].Type == TokenType.OPERATOR && theStack[i + 1].Value != "=") {
                         if (i < theStack.Count - 2 && theStack[i + 2].Type == TokenType.IDENTIFIER) {
+                            if (theStack[i].Type == TokenType.IDENTIFIER) {
+                                theStack.RemoveAt(i);
+                                theStack.Insert(i, expressionReduction);
+                            } else if (theStack[i].Type == TokenType.ASSIGNMENT) {
+                                theStack.RemoveAt(i);
+                                theStack.Insert(i, assignmentReduction);
+                            }
                             theStack.RemoveAt(i);
                             theStack.Insert(i, expressionReduction);
                             theStack.RemoveAt(i + 1);
@@ -64,15 +73,13 @@ namespace JenPile {
                             PrintRule(1);
                             PrintRule(2);
                         }
-
                     }
                 }
             }
         }
 
         private void CheckForAssignment() {
-            Token assignmentReduction = new Token(TokenType.ASSIGNMENT, "assignment");
-            Console.WriteLine("Calling Assign Check");
+            // Console.WriteLine("Calling Assign Check");
             // check stack for keyword id = expression then replace w/ assignment
             // check stack for id = expression then replace w/ assignment
             if (theStack.Count > 3) {
@@ -84,7 +91,7 @@ namespace JenPile {
                         theStack.RemoveAt(1);
                         PrintRule(5);
                     }
-                } 
+                }
             } else if (theStack.Count > 4) {
                 if (theStack[0].Type == TokenType.KEYWORD && theStack[1].Type == TokenType.IDENTIFIER && theStack[2].Value == "=") {
                     if (theStack[3].Type == TokenType.EXPRESSION || theStack[3].Type == TokenType.FLOAT || theStack[3].Type == TokenType.INTEGER || theStack[3].Type == TokenType.IDENTIFIER) {
@@ -103,10 +110,11 @@ namespace JenPile {
             // read a token, is it expression, 
             // pop statements, say sucessfully parsed for now 
             // in future would use statements with loops and if else
-           
+
         }
 
         private void CheckForStatement() {
+
             // statements should always have a ; at the end
             // declarative ;
             // check for Assign then ; 
@@ -116,6 +124,8 @@ namespace JenPile {
                 for (int i = 0; i < theStack.Count - 1; i++) {
                     if (theStack[i].Type == TokenType.ASSIGNMENT || theStack[i].Type == TokenType.EXPRESSION) {
                         if (theStack[i + 1].Value == ";") {
+                            theStack.RemoveAt(i);
+                            theStack.Insert(i, statementReduction);
                             PrintRule(6);
                         }
                     }
