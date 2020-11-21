@@ -4,8 +4,7 @@ using System.Text;
 using System.Linq;
 
 namespace JenPile {
-    class Parser {
-        // toggles printing rules on and off
+    class Parser { 
         private bool printRules = true;
         List<Token> theStack = new List<Token>();
         Token endOfFile = new Token(TokenType.ENDOFFILE, "%");
@@ -25,7 +24,6 @@ namespace JenPile {
 
         public void Driver(List<Token> tokenizedInput) {
             Console.WriteLine("Starting Parse");
-            //theStack.Add(endOfFile); // Push End of File marker
             tokenizedInput.Add(endOfFile); // Add End Of String to input string
             foreach (Token input in tokenizedInput) {
                 Token tokenToParse = input;
@@ -33,19 +31,15 @@ namespace JenPile {
                     Shift(tokenToParse);
                     Reduce();
                 }
-
             }
-
         }
 
-        // This method moves tokens from the input buffer tokenized Input onto the stack
+      
         private void Shift(Token currentToken) {
-            // Printing to be like example
             Console.WriteLine($"{currentToken.Type} = {currentToken.Value}");
             theStack.Add(currentToken);
         }
 
-        // If there is a match (true), replace the token with the production rule 
         private void Reduce() {
             CheckForExpression();
             CheckForAssignment();
@@ -79,9 +73,6 @@ namespace JenPile {
         }
 
         private void CheckForAssignment() {
-            // Console.WriteLine("Calling Assign Check");
-            // check stack for keyword id = expression then replace w/ assignment
-            // check stack for id = expression then replace w/ assignment
             if (theStack.Count > 3) {
                 if (theStack[0].Type == TokenType.IDENTIFIER && theStack[1].Value == "=") {
                     if (theStack[2].Type == TokenType.EXPRESSION || theStack[2].Type == TokenType.FLOAT || theStack[2].Type == TokenType.INTEGER || theStack[2].Type == TokenType.IDENTIFIER) {
@@ -113,13 +104,7 @@ namespace JenPile {
 
         }
 
-        private void CheckForStatement() {
-
-            // statements should always have a ; at the end
-            // declarative ;
-            // check for Assign then ; 
-            // expression ;
-            // would eventually handle if, while, do 
+        private void CheckForStatement() { 
             if (theStack.Count > 2) {
                 for (int i = 0; i < theStack.Count - 1; i++) {
                     if (theStack[i].Type == TokenType.ASSIGNMENT || theStack[i].Type == TokenType.EXPRESSION) {
@@ -131,16 +116,11 @@ namespace JenPile {
                     }
                 }
             }
-
-
         }
 
         private void Declaritive() {
             // a keyword and an id
-
-
             // optional keyword id , id , id (recursive to add unlimited id's with commas, no ending comma ?) 
-
         }
 
         private void Error() {
@@ -185,36 +165,8 @@ namespace JenPile {
                         break;
                 }
 
-
-
-
-
-
-
-
-
-
-
             }
-
-
         }
-
-
-
-
-
-
-
-
         #endregion
-
-
-
-
-
-
-
-
     }
 }
