@@ -5,22 +5,21 @@ namespace JenPile {
     internal class SymbolTable {
         private int MEMORY_LOCATION = 5000;
 
-        public Dictionary<string, int> IdTable = new Dictionary<string, int>();
+        public Dictionary<Token, int> IdTable = new Dictionary<Token, int>();
 
-        public void AddToTable(string identifierCheck) {
+        public void AddToTable(Token identifierCheck) {
             try {
                 IdTable.Add(identifierCheck, MEMORY_LOCATION);
                 MEMORY_LOCATION++;
             } catch (ArgumentException) {
-                Console.WriteLine("An identifier with {0} already exists", identifierCheck);
+                Console.WriteLine("An identifier with {0} already exists", identifierCheck.Value);
             }
         }
 
         public void PrintSymbolTable() {
-            foreach(KeyValuePair<string, int> sym in IdTable) {
-                Console.WriteLine("Identifier: {0}, Memory Location: {1} ", sym.Key, sym.Value);
+            foreach (KeyValuePair<Token, int> sym in IdTable) {
+                Console.WriteLine("Identifier: {0}, Token Type: {1}, Memory Location: {2} ", sym.Key.Value, sym.Key.Type, sym.Value);
             }
         }
-
     }
 }

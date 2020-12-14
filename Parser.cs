@@ -9,6 +9,7 @@ namespace JenPile {
 
         //private bool check = false;
         private List<Token> theStack = new List<Token>();
+
         private Token endOfFile = new Token(TokenType.ENDOFFILE, "%");
         private SymbolTable symbolTbl = new SymbolTable();
 
@@ -28,7 +29,7 @@ namespace JenPile {
                 if (tokenToParse.Value != " ") {
                     Shift(tokenToParse);
                     if (tokenToParse.Type == TokenType.IDENTIFIER) {
-                        symbolTbl.AddToTable(tokenToParse.Value);
+                        symbolTbl.AddToTable(tokenToParse);
                     }
                     Reduce();
                 }
