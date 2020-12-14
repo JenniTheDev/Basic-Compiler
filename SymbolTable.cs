@@ -4,10 +4,11 @@ using System.Collections.Generic;
 namespace JenPile {
     internal class SymbolTable {
         private int MEMORY_LOCATION = 5000;
+        // Token should instead be a identifier and previous keyword pair
 
-        public Dictionary<Token, int> IdTable = new Dictionary<Token, int>();
+        public Dictionary<Variable, int> IdTable = new Dictionary<Variable, int>();
 
-        public void AddToTable(Token identifierCheck) {
+        public void AddToTable(Variable identifierCheck) {
             try {
                 IdTable.Add(identifierCheck, MEMORY_LOCATION);
                 MEMORY_LOCATION++;
@@ -17,8 +18,8 @@ namespace JenPile {
         }
 
         public void PrintSymbolTable() {
-            foreach (KeyValuePair<Token, int> sym in IdTable) {
-                Console.WriteLine("Identifier: {0}, Token Type: {1}, Memory Location: {2} ", sym.Key.Value, sym.Key.Type, sym.Value);
+            foreach (KeyValuePair<Variable, int> sym in IdTable) {
+                Console.WriteLine($"Identifier: {sym.Key.Value}, Token Type: {sym.Key.Type}, Memory Location: {sym.Value} ");
             }
         }
     }

@@ -28,13 +28,19 @@ namespace JenPile {
                 Token tokenToParse = input;
                 if (tokenToParse.Value != " ") {
                     Shift(tokenToParse);
-                    if (tokenToParse.Type == TokenType.IDENTIFIER) {
-                        symbolTbl.AddToTable(tokenToParse);
+                    if (tokenToParse.Type == TokenType.KEYWORD) {
+                        string keywordToSave = tokenToParse.Value; 
                     }
+                    CheckSymbolTable(tokenToParse);
+
                     Reduce();
                 }
             }
             symbolTbl.PrintSymbolTable();
+        }
+
+        private void CheckSymbolTable(Token tokenToParse) {
+            
         }
 
         // This method moves tokens from the input buffer tokenized Input onto the stack
