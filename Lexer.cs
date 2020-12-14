@@ -1,41 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
 namespace JenPile {
     public class Lexer {
-        const string separatorPattern = @"[=*+/\-;\s:()\[\]{},]+";
+        private const string separatorPattern = @"[=*+/\-;\s:()\[\]{},]+";
+
         // currently working for single letters
-        const string identifierPattern = @"[A-Z]";
+        private const string identifierPattern = @"[A-Z]";
+
         // original working one that didn't do single letters
         // const string identifierPattern = @"^[A-Z]\w|\$";
-        const string floatPattern = @"^-?\d+\.\d+$";
-        const string integerPattern = @"^-?\d+$";
-        // Trying this
-        const string operatorPattern = @"[=+_*/]";
+        private const string floatPattern = @"^-?\d+\.\d+$";
 
+        private const string integerPattern = @"^-?\d+$";
+
+        // Trying this
+        private const string operatorPattern = @"[=+_*/]";
 
         private readonly Regex separatorRgx = new Regex(separatorPattern, RegexOptions.IgnoreCase);
         private readonly Regex identifierRgx = new Regex(identifierPattern, RegexOptions.IgnoreCase);
         private readonly Regex floatRgx = new Regex(floatPattern);
         private readonly Regex integerRgx = new Regex(integerPattern);
-        // Trying this 
+
+        // Trying this
         private readonly Regex operatorRgx = new Regex(operatorPattern);
+
+        private SymbolTable symbolTbl = new SymbolTable();
 
         #region Properties
         public List<Token> Tokens { get; private set; } = new List<Token>();
-        #endregion
+        #endregion Properties
 
         #region Constructor
-        public Lexer() { }
-        #endregion
+
+        public Lexer() {
+        }
+
+        #endregion Constructor
 
         #region Class Methods
+
         public List<Token> LexInput(List<string> input) {
             List<Token> tokens = new List<Token>();
             StringBuilder evalLine = new StringBuilder();
+            // SymbolTable symbolTable = new SymbolTable();
             bool evalOff = false;
 
             foreach (string line in input) {
@@ -49,7 +59,6 @@ namespace JenPile {
 
                     Match separatorCheck = separatorRgx.Match(c.ToString());
                     if (separatorCheck.Success) {
-
                         // We've hit a separator, evaluate the line, & add it as a token with the separator
                         if (evalLine.Length > 0) {
                             string tokenToEval = evalLine.ToString();
@@ -61,8 +70,8 @@ namespace JenPile {
                             } else if (integerRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
+                                symbolTbl.AddToTable(tokenToEval);
                                 type = TokenType.IDENTIFIER;
-
                             } else {
                                 // Should throw an error if this hits
                                 type = TokenType.UNDEFINED;
@@ -70,11 +79,10 @@ namespace JenPile {
 
                             tokens.Add(new Token(type, tokenToEval));
                         }
-                        // Trying this for part 2 AND IT WORKS!  
+                        // Trying this for part 2 AND IT WORKS!
                         if (operatorRgx.IsMatch(c.ToString())) {
                             tokens.Add(new Token(TokenType.OPERATOR, c.ToString()));
                         } else {
-
                             tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
                         }
                         //tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
@@ -94,10 +102,11 @@ namespace JenPile {
                 Console.WriteLine($"{token.Type} = {token.Value}");
                 // System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
             }
+            symbolTbl.PrintSymbolTable();
         }
 
+       
 
-        #endregion
+        #endregion Class Methods
     }
 }
-

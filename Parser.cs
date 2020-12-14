@@ -1,29 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
 
 namespace JenPile {
-    class Parser {
+    internal class Parser {
+
         // toggles printing rules on and off
         private bool printRules = true;
-        private bool check = false;
-        List<Token> theStack = new List<Token>();
-        Token endOfFile = new Token(TokenType.ENDOFFILE, "%");
 
-        #region Properties
+        //private bool check = false;
+        private List<Token> theStack = new List<Token>();
+        private Token endOfFile = new Token(TokenType.ENDOFFILE, "%");
 
-        #endregion
 
         #region Constructor
-        public Parser() { }
-        #endregion
+
+        public Parser() {
+        }
+
+        #endregion Constructor
 
         #region Class Methods
 
         public void Driver(List<Token> tokenizedInput) {
-            Console.WriteLine("Starting Parse");
-            //theStack.Add(endOfFile); // Push End of File marker
             tokenizedInput.Add(endOfFile); // Add End Of String to input string
             foreach (Token input in tokenizedInput) {
                 Token tokenToParse = input;
@@ -32,7 +30,6 @@ namespace JenPile {
                     Reduce();
                 }
             }
-
         }
 
         // This method moves tokens from the input buffer tokenized Input onto the stack
@@ -42,7 +39,7 @@ namespace JenPile {
             theStack.Add(currentToken);
         }
 
-        // If there is a match (true), replace the token with the production rule 
+        // If there is a match (true), replace the token with the production rule
         private void Reduce() {
             CheckForExpression();
             CheckForAssignment();
@@ -64,7 +61,6 @@ namespace JenPile {
                             PrintRule(1);
                             PrintRule(2);
                         }
-
                     }
                 }
             }
@@ -84,7 +80,7 @@ namespace JenPile {
                         theStack.RemoveAt(1);
                         PrintRule(5);
                     }
-                } 
+                }
             } else if (theStack.Count > 4) {
                 if (theStack[0].Type == TokenType.KEYWORD && theStack[1].Type == TokenType.IDENTIFIER && theStack[2].Value == "=") {
                     if (theStack[3].Type == TokenType.EXPRESSION || theStack[3].Type == TokenType.FLOAT || theStack[3].Type == TokenType.INTEGER || theStack[3].Type == TokenType.IDENTIFIER) {
@@ -100,18 +96,17 @@ namespace JenPile {
 
         private void Function() {
             // repeats through everything until end of file
-            // read a token, is it expression, 
-            // pop statements, say sucessfully parsed for now 
+            // read a token, is it expression,
+            // pop statements, say sucessfully parsed for now
             // in future would use statements with loops and if else
-           
         }
 
         private void CheckForStatement() {
             // statements should always have a ; at the end
             // declarative ;
-            // check for Assign then ; 
+            // check for Assign then ;
             // expression ;
-            // would eventually handle if, while, do 
+            // would eventually handle if, while, do
             if (theStack.Count > 2) {
                 for (int i = 0; i < theStack.Count - 1; i++) {
                     if (theStack[i].Type == TokenType.ASSIGNMENT || theStack[i].Type == TokenType.EXPRESSION) {
@@ -121,16 +116,12 @@ namespace JenPile {
                     }
                 }
             }
-
-
         }
 
         private void Declaritive() {
             // a keyword and an id
 
-
-            // optional keyword id , id , id (recursive to add unlimited id's with commas, no ending comma ?) 
-
+            // optional keyword id , id , id (recursive to add unlimited id's with commas, no ending comma ?)
         }
 
         private void Error() {
@@ -162,6 +153,7 @@ namespace JenPile {
                     case 5:
                         Console.WriteLine("<Assignment> -> <Identifier> = <Expression>");
                         break;
+
                     case 6:
                         Console.WriteLine("<Statement> -> <Assignment> ;");
                         break;
@@ -174,37 +166,9 @@ namespace JenPile {
                         Console.WriteLine("Error - No valid rule to use");
                         break;
                 }
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
         }
 
-
-
-
-
-
-
-
-        #endregion
-
-
-
-
-
-
-
-
+        #endregion Class Methods
     }
 }

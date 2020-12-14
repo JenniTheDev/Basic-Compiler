@@ -3,17 +3,24 @@ using System.Collections.Generic;
 
 namespace JenPile {
     internal class SymbolTable {
-        private const int MEMORY_LOCATION = 5000;
-        private Token tokenToAdd;
+        private int MEMORY_LOCATION = 5000;
 
-        public Dictionary<Token, int> IdTable = new Dictionary<Token, int>();
+        public Dictionary<string, int> IdTable = new Dictionary<string, int>();
 
-        public void addToTable(Token token) {
+        public void AddToTable(string identifierCheck) {
             try {
-                IdTable.Add(tokenToAdd, MEMORY_LOCATION);
+                IdTable.Add(identifierCheck, MEMORY_LOCATION);
+                MEMORY_LOCATION++;
             } catch (ArgumentException) {
-                Console.WriteLine("An identifier with *this* already exists");
+                Console.WriteLine("An identifier with = {0} already exists", identifierCheck);
             }
         }
+
+        public void PrintSymbolTable() {
+            foreach(KeyValuePair<string, int> sym in IdTable) {
+                Console.WriteLine("Identifier: = {0}, Memory Location: = {1} ", sym.Key, sym.Value);
+            }
+        }
+
     }
 }
