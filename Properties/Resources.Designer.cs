@@ -59,5 +59,15 @@ namespace JenPile.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] ShortTestCase {
+            get {
+                object obj = ResourceManager.GetObject("ShortTestCase", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

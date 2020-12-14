@@ -28,19 +28,14 @@ namespace JenPile {
                 Token tokenToParse = input;
                 if (tokenToParse.Value != " ") {
                     Shift(tokenToParse);
-                    if (tokenToParse.Type == TokenType.KEYWORD) {
-                        string keywordToSave = tokenToParse.Value; 
-                    }
-                    CheckSymbolTable(tokenToParse);
-
                     Reduce();
                 }
             }
             symbolTbl.PrintSymbolTable();
         }
 
-        private void CheckSymbolTable(Token tokenToParse) {
-            
+        private void CheckSymbolTable() {
+
         }
 
         // This method moves tokens from the input buffer tokenized Input onto the stack
@@ -95,6 +90,11 @@ namespace JenPile {
             } else if (theStack.Count > 4) {
                 if (theStack[0].Type == TokenType.KEYWORD && theStack[1].Type == TokenType.IDENTIFIER && theStack[2].Value == "=") {
                     if (theStack[3].Type == TokenType.EXPRESSION || theStack[3].Type == TokenType.FLOAT || theStack[3].Type == TokenType.INTEGER || theStack[3].Type == TokenType.IDENTIFIER) {
+                        Symbol makeSymbol = new Symbol();
+                        // Make a symbol out of stack 0 and stack 1
+                        // put in symbol table@
+                        string temp = theStack[0].Type.ToString();
+                        makeSymbol.keyword = temp;
                         theStack.RemoveAt(0);
                         theStack.Insert(0, assignmentReduction);
                         theStack.RemoveAt(1);

@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Jenni</AssemblyName>
     <RootNamespace>JenPile</RootNamespace>
+    <StartupObject>JenPile.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +31,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ShortTestCase.jen">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
