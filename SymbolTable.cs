@@ -12,13 +12,13 @@ namespace JenPile {
                 IdTable.Add(identifierCheck, MEMORY_LOCATION);
                 MEMORY_LOCATION++;
             } catch (ArgumentException) {
-                Console.WriteLine("An identifier with = {0} already exists", identifierCheck);
+                Console.WriteLine("An identifier with {0} already exists", identifierCheck);
             }
         }
 
         public void PrintSymbolTable() {
             foreach(KeyValuePair<string, int> sym in IdTable) {
-                Console.WriteLine("Identifier: = {0}, Memory Location: = {1} ", sym.Key, sym.Value);
+                Console.WriteLine("Identifier: {0}, Memory Location: {1} ", sym.Key, sym.Value);
             }
         }
 

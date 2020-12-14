@@ -26,8 +26,8 @@ namespace JenPile {
 
         // Trying this
         private readonly Regex operatorRgx = new Regex(operatorPattern);
-
-        private SymbolTable symbolTbl = new SymbolTable();
+        // moved to Parser
+        // private SymbolTable symbolTbl = new SymbolTable();
 
         #region Properties
         public List<Token> Tokens { get; private set; } = new List<Token>();
@@ -70,7 +70,7 @@ namespace JenPile {
                             } else if (integerRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
-                                symbolTbl.AddToTable(tokenToEval);
+                                //symbolTbl.AddToTable(tokenToEval);
                                 type = TokenType.IDENTIFIER;
                             } else {
                                 // Should throw an error if this hits
@@ -102,7 +102,7 @@ namespace JenPile {
                 Console.WriteLine($"{token.Type} = {token.Value}");
                 // System.IO.File.AppendAllText(@"CompilerOutput.jen", $"{token.Type} = {token.Value} \r");
             }
-            symbolTbl.PrintSymbolTable();
+            // symbolTbl.PrintSymbolTable();
         }
 
        

@@ -10,7 +10,7 @@ namespace JenPile {
         //private bool check = false;
         private List<Token> theStack = new List<Token>();
         private Token endOfFile = new Token(TokenType.ENDOFFILE, "%");
-
+        private SymbolTable symbolTbl = new SymbolTable();
 
         #region Constructor
 
@@ -27,9 +27,13 @@ namespace JenPile {
                 Token tokenToParse = input;
                 if (tokenToParse.Value != " ") {
                     Shift(tokenToParse);
+                    if (tokenToParse.Type == TokenType.IDENTIFIER) {
+                        symbolTbl.AddToTable(tokenToParse.Value);
+                    }
                     Reduce();
                 }
             }
+            symbolTbl.PrintSymbolTable();
         }
 
         // This method moves tokens from the input buffer tokenized Input onto the stack
