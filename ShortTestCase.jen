@@ -1,4 +1,6 @@
 ﻿!This is a test!
-int jenn, awe$ome;
+int jenn;
+int awe$ome;
 jenn = 10;
 awe$ome = 100;
+int jenn = 20;

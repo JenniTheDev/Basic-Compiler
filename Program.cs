@@ -32,10 +32,14 @@ namespace JenPile {
             lex.LexInput(input.Inputs);
 
             //TODO: Remove. For Demoing
-            // lex.PrintTokens(lex.LexInput(input.Inputs));
+             Console.WriteLine("Begining Lexer: ");
+            lex.PrintTokens(lex.LexInput(input.Inputs));
+            Console.WriteLine("");
 
-            // TODO: Is passing the list of token & value pairs? 
+            Console.WriteLine("Begining Parser: ");
             expression.Driver(lex.LexInput(input.Inputs));
+
+            
 
 
 
