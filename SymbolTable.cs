@@ -10,7 +10,7 @@ namespace JenPile {
 
         public void AddToTable(Symbol identifierCheck) {
             if (IdTable.ContainsKey(identifierCheck)) {
-                Console.WriteLine($"An identifier with {identifierCheck.Keyword} already exists");
+                Console.WriteLine($"An identifier with {identifierCheck.Identifier} already exists");
             } else {
                 IdTable.Add(identifierCheck, memoryLocation);
                 memoryLocation++;
@@ -19,7 +19,7 @@ namespace JenPile {
 
         public void PrintSymbolTable() {
             foreach (KeyValuePair<Symbol, int> sym in IdTable) {
-                Console.WriteLine($"Identifier: {sym.Key.Identifier}, Token Type: {sym.Key.Keyword}, Memory Location: {sym.Value} ");
+                Console.WriteLine($"Identifier: {sym.Key.Identifier}, Symbol Type: {sym.Key.Keyword}, Memory Location: {sym.Value} ");
             }
         }
     }

@@ -28,14 +28,32 @@ namespace JenPile {
                 Token tokenToParse = input;
                 if (tokenToParse.Value != " ") {
                     Shift(tokenToParse);
+                    if (tokenToParse.Type == TokenType.IDENTIFIER) {
+                        CheckSymbolTable();
+                    }
+                    
                     Reduce();
                 }
             }
+            Console.WriteLine("Symbol Table: ");
             symbolTbl.PrintSymbolTable();
         }
 
         private void CheckSymbolTable() {
-
+            if (theStack.Count > 1) {
+                for (int i = 1; i < theStack.Count; i++) {
+                    if (theStack[i].Type == TokenType.IDENTIFIER) {
+                        if (theStack[i-1].Type == TokenType.KEYWORD) {
+                            if (theStack[i-1].Value == "int") {
+                                symbolTbl.AddToTable(new Symbol(SymbolType.INTEGER, theStack[i].Value));
+                            } else if (theStack[i - 1].Value == "float") {
+                                symbolTbl.AddToTable(new Symbol(SymbolType.FLOAT, theStack[i].Value));
+                            }
+                        
+                        }
+                    }
+                }
+            }
         }
 
         // This method moves tokens from the input buffer tokenized Input onto the stack
@@ -90,11 +108,11 @@ namespace JenPile {
             } else if (theStack.Count > 4) {
                 if (theStack[0].Type == TokenType.KEYWORD && theStack[1].Type == TokenType.IDENTIFIER && theStack[2].Value == "=") {
                     if (theStack[3].Type == TokenType.EXPRESSION || theStack[3].Type == TokenType.FLOAT || theStack[3].Type == TokenType.INTEGER || theStack[3].Type == TokenType.IDENTIFIER) {
-                        Symbol makeSymbol = new Symbol();
-                        // Make a symbol out of stack 0 and stack 1
-                        // put in symbol table@
-                        string temp = theStack[0].Type.ToString();
-                        makeSymbol.keyword = temp;
+                        //if (theStack[0].Value == "int") {
+                        //    symbolTbl.AddToTable(new Symbol(SymbolType.INTEGER, theStack[1].Value));
+                        //} else if (theStack[0].Value == "float") {
+                        //    symbolTbl.AddToTable(new Symbol(SymbolType.FLOAT, theStack[1].Value));
+                        //}
                         theStack.RemoveAt(0);
                         theStack.Insert(0, assignmentReduction);
                         theStack.RemoveAt(1);

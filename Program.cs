@@ -34,6 +34,7 @@ namespace JenPile {
             //TODO: Remove. For Demoing
              Console.WriteLine("Begining Lexer: ");
             lex.PrintTokens(lex.LexInput(input.Inputs));
+            Console.WriteLine("");
 
             Console.WriteLine("Begining Parser: ");
             expression.Driver(lex.LexInput(input.Inputs));

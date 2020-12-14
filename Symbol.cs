@@ -1,10 +1,10 @@
 ﻿namespace JenPile {
 
     public struct Symbol {
-        public string Keyword { get; private set; }
+        public SymbolType Keyword { get; private set; }
         public string Identifier { get; private set; }
 
-        public Symbol(string keyword, string identifier) {
+        public Symbol(SymbolType keyword, string identifier) {
             Keyword = keyword;
             Identifier = identifier;
         }
