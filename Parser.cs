@@ -44,9 +44,9 @@ namespace JenPile {
                 for (int i = 1; i < theStack.Count; i++) {
                     if (theStack[i].Type == TokenType.IDENTIFIER) {
                         if (theStack[i-1].Type == TokenType.KEYWORD) {
-                            if (theStack[i-1].Value == "int") {
+                            if (theStack[i-1].Value == "int" ) {
                                 symbolTbl.AddToTable(new Symbol(SymbolType.INTEGER, theStack[i].Value));
-                            } else if (theStack[i - 1].Value == "float") {
+                            } else if (theStack[i - 1].Value == "float" ) {
                                 symbolTbl.AddToTable(new Symbol(SymbolType.FLOAT, theStack[i].Value));
                             }
                         
@@ -71,7 +71,7 @@ namespace JenPile {
 
         private void CheckForExpression() {
             Console.WriteLine("Calling ExpressCheck");
-
+            Token expressionReduction = new Token(TokenType.EXPRESSION, "expression");
             for (int i = 0; i < theStack.Count; i++) {
                 if (theStack[i].Type == TokenType.IDENTIFIER || theStack[i].Type == TokenType.ASSIGNMENT) {
                     if (i < theStack.Count - 1 && theStack[i + 1].Type == TokenType.OPERATOR && theStack[i + 1].Value != "=") {

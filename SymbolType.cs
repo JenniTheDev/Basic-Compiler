@@ -4,6 +4,7 @@
         NONE,
         INTEGER,
         FLOAT,
+        STRING,
         BOOL,
         UNDEFINED
     }
