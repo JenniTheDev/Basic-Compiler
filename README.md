@@ -1,19 +1,25 @@
 # Compiler Project for Compilers and Languages, Fall 2020 at CSUF
 
 ## Table Of Contents
-* [Assignment Instructions: Lexical Analyzer](#AssignmentInstructionsPartOne)
+* [Project Overview](#Overview)
+* [Documentation](#documentation)
+* [Project Directions: Lexical Analyzer](#AssignmentInstructionsPartOne)
 * [Sample Token List](#SampleTokenList)
 * [Simple Declaration Assignment Input](#AssignmentInput)
 * [Simple Declaration Assignment Output](#AssignmentOutput)
 * [Sample Input File](#InputFile)
 * [Sample Output File](#OutputFile)
-* [Documentation Part One](#documentation)
-* [Assignment Instructions: Syntax Analyzer](#AssignmentInstructionsPartTwo)
+* [Project Directions: Syntax Analyzer](#AssignmentInstructionsPartTwo)
 * [Syntax Analyzer Rules](#SyntaxRules)
 
 
+## Project Overview <a name = "Overview"></a>
+JenPile is a simple compiler that was built to translate basic programming logic into machine code. It was built in three phases; the Lexical Analyzer, Syntax Analyzer, and  Parser. </br></br>
 
-## Assignment Instructions <a name = "AssigmentInstructionsPartOne"></a>
+## Documentation <a name = "Documentation"></a>
+[Software Requirement Specification](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification")
+
+## Project Directions: Lexical Analyzer <a name = "AssigmentInstructionsPartOne"></a>
 
 
 The first assignment is to write a lexical analyzer (lexer)
@@ -125,12 +131,8 @@ SEPARATOR 	=	 ;</br>
 SEPARATOR 	=	 }</br>
 
 
-## Documentation<a name = "documentation"></a>
 
-[View Documentation](https://jenniferafelton.github.io/CSUF323_Compiler/JfeltonCompilerDocumentation.pdf "PDF of Documentation")
-</br></br>
-
-## Assignment Instructions: Syntax Analyzer<a name = "AssignmentInstructionsPartTwo"></a>  </br>
+## Project Directions: Syntax Analyzer<a name = "AssignmentInstructionsPartTwo"></a>  </br>
 The second assignment is to write a syntax analyzer. You may use any top-down parser such as a RDP, a
 predictive recursive descent parser or a table driven predictive parser. <br>
 </br>
