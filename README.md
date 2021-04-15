@@ -18,8 +18,8 @@ JenPile is a simple compiler that was built to translate basic programming logic
 
 ## Documentation <a name = "Documentation"></a>
 [Software Requirement Specification](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification") </br>
-[Lexer Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentationLexer.pdf "PDF of Software Requirement Specification")</br>
-[Parser Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentationParser.pdf "PDF of Software Requirement Specification")</br></br>
+[Lexer Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentation.Lexer.pdf "PDF of Software Requirement Specification")</br>
+[Parser Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentation.Parser.pdf "PDF of Software Requirement Specification")</br></br>
 
 ## Project Directions: Lexical Analyzer <a name = "AssigmentInstructionsPartOne"></a>
 
