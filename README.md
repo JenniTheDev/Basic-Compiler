@@ -17,9 +17,9 @@
 JenPile is a simple compiler that was built to translate basic programming logic into machine code. It was built in three phases; the Lexical Analyzer, Syntax Analyzer, and  Parser. It was created for the Compiler Project for Compilers and Languages, Fall 2020 at CSUF </br></br>
 
 ## Documentation <a name = "Documentation"></a>
-[Software Requirement Specification](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification")
-[Lexer Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentationLexer.pdf "PDF of Software Requirement Specification")
-[Parser Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentationParser.pdf "PDF of Software Requirement Specification")
+[Software Requirement Specification](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification") </br>
+[Lexer Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentationLexer.pdf "PDF of Software Requirement Specification")</br>
+[Parser Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentationParser.pdf "PDF of Software Requirement Specification")</br></br>
 
 ## Project Directions: Lexical Analyzer <a name = "AssigmentInstructionsPartOne"></a>
 
