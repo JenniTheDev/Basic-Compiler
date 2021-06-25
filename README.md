@@ -11,13 +11,13 @@
 
 
 ## Project Overview <a name = "Overview"></a>
-JenPile is a simple compiler that was built to translate basic programming logic into machine code. It was built in three phases; the Lexical Analyzer, Syntax Analyzer, and  Parser. It was created for the Compiler Project for Compilers and Languages, Fall 2020 at CSUF. Detailed descriptions of each part and directions on how to run can be found in the [Software Requirements Specification](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification")
+JenPile is a simple compiler that was built to translate basic programming logic into machine code. It was built in three phases; the Lexical Analyzer, Syntax Analyzer, and  Parser. It was created for the Compiler Project for Compilers and Languages, Fall 2020 at CSUF. Detailed descriptions of each part and directions on how to run can be found in the [Software Requirements Specification](https://jennithe.dev/JenPile/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification")
 <br><br>
 
 ## Documentation <a name = "Documentation"></a>
-[Software Requirement Specification](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification") <br>
-[Lexer Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentation.Lexer.pdf "PDF of Software Requirement Specification")<br>
-[Parser Documentation](https://jennithedev.github.io/Basic-Compiler/Documentation/JenPile.CompilerDocumentation.Parser.pdf "PDF of Software Requirement Specification")<br><br>
+[Software Requirement Specification](https://jennithe.dev/JenPile/Documentation/JenPile.SoftwareRequirementsSpecification.pdf "PDF of Software Requirement Specification") <br>
+[Lexer Documentation](https://jennithe.dev/JenPile/Documentation/JenPile.CompilerDocumentation.Lexer.pdf "PDF of Software Requirement Specification")<br>
+[Parser Documentation](https://jennithe.dev/JenPile/Documentation/JenPile.CompilerDocumentation.Parser.pdf "PDF of Software Requirement Specification")<br><br>
 
 ## The Compiler - Lexer <a name = "lexer"></a><br>
 
