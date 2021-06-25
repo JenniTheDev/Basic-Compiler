@@ -26,7 +26,7 @@ The first part of the project was to write a lexical analyzer, using a FSM for t
 identifier, integer and real numbers. The function lexer, should return a token when it is needed. The lexer should return
 a record, one field for the token and another field for the actual value (lexeme) of the token. The main program should read in a file containing the source code given
 to generate tokens and write the results to an output file.
-<br>
+<br><br>
 ![](https://jennithe.dev/JenPile/img/lexer.png)
 
 <br><br>
