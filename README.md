@@ -25,6 +25,8 @@ identifier, integer and real numbers. The function lexer, should return a token 
 a record, one field for the token and another field for the actual value (lexeme) of the token. The main program should read in a file containing the source code given
 to generate tokens and write the results to an output file.
 
+![](https://jennithe.dev/JenPile/img/lexer.png)
+
 </br></br>
 
 
@@ -35,7 +37,7 @@ parser such as a RDP, a predictive recursive descent parser or a table driven
 predictive parser. All grammar must be rewritten to remove left recursion.
 Arithmetic expressions should be done first, then Assignment and declarations.
 The Parser should print to an output file the token, lexeme, and production rules.
-
+![](https://jennithe.dev/JenPile/img/parser.png)
 </br> </br>
 
 
@@ -54,3 +56,4 @@ in a symbol table. The symbol table should hold the lexeme and a “memory
 address” where it can be found. The table should be checked every time an
 identifier is declared and return an error message if it is found. The symbol table
 should also make sure the type matches.
+![](https://jennithe.dev/JenPile/img/symboltable.png)
