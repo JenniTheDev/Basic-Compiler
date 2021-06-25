@@ -6,7 +6,7 @@
 * [The Compiler - Lexer](#lexer)
 * [The Compiler - Parser](#parser)
 * [The Compiler - Symbol Table](#table)
-* [Acknowledgments](#Ack)
+
 
 
 
