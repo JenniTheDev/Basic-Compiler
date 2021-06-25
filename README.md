@@ -12,7 +12,6 @@
 
 ## Project Overview <a name = "Overview"></a>
 JenPile is a simple compiler that was built to translate basic programming logic into machine code. It was built in three phases; the Lexical Analyzer, Syntax Analyzer, and  Parser. It was created for the Compiler Project for Compilers and Languages, Fall 2020 at CSUF
-
 <br><br>
 
 ## Documentation <a name = "Documentation"></a>
