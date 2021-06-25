@@ -39,7 +39,7 @@ parser such as a RDP, a predictive recursive descent parser or a table driven
 predictive parser. All grammar must be rewritten to remove left recursion.
 Arithmetic expressions should be done first, then Assignment and declarations.
 The Parser should print to an output file the token, lexeme, and production rules.
-<br>
+<br><br>
 ![](https://jennithe.dev/JenPile/img/parser.png)
 <br> <br>
 
@@ -59,5 +59,5 @@ in a symbol table. The symbol table should hold the lexeme and a “memory
 address” where it can be found. The table should be checked every time an
 identifier is declared and return an error message if it is found. The symbol table
 should also make sure the type matches.
-<br>
+<br><br>
 ![](https://jennithe.dev/JenPile/img/symboltable.png)
