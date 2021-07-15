@@ -4,7 +4,6 @@ using System.Collections.Generic;
 namespace JenPile {
     internal class SymbolTable {
         private int memoryLocation = 5000;
-        // Token should instead be a identifier and previous keyword pair
 
         public Dictionary<Symbol, int> IdTable = new Dictionary<Symbol, int>();
 

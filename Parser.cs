@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace JenPile {
     internal class Parser {
-
         // toggles printing rules on and off
         private bool printRules = true;
 
@@ -31,7 +30,7 @@ namespace JenPile {
                     if (tokenToParse.Type == TokenType.IDENTIFIER) {
                         CheckSymbolTable();
                     }
-                    
+
                     Reduce();
                 }
             }
@@ -49,14 +48,12 @@ namespace JenPile {
                             } else if (theStack[i - 1].Value == "float" ) {
                                 symbolTbl.AddToTable(new Symbol(SymbolType.FLOAT, theStack[i].Value));
                             }
-                        
                         }
                     }
                 }
             }
         }
 
-      
         private void Shift(Token currentToken) {
             Console.WriteLine($"{currentToken.Type} = {currentToken.Value}");
             theStack.Add(currentToken);
@@ -106,11 +103,6 @@ namespace JenPile {
             } else if (theStack.Count > 4) {
                 if (theStack[0].Type == TokenType.KEYWORD && theStack[1].Type == TokenType.IDENTIFIER && theStack[2].Value == "=") {
                     if (theStack[3].Type == TokenType.EXPRESSION || theStack[3].Type == TokenType.FLOAT || theStack[3].Type == TokenType.INTEGER || theStack[3].Type == TokenType.IDENTIFIER) {
-                        //if (theStack[0].Value == "int") {
-                        //    symbolTbl.AddToTable(new Symbol(SymbolType.INTEGER, theStack[1].Value));
-                        //} else if (theStack[0].Value == "float") {
-                        //    symbolTbl.AddToTable(new Symbol(SymbolType.FLOAT, theStack[1].Value));
-                        //}
                         theStack.RemoveAt(0);
                         theStack.Insert(0, assignmentReduction);
                         theStack.RemoveAt(1);

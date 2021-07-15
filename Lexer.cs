@@ -10,8 +10,7 @@ namespace JenPile {
         // currently working for single letters
         private const string identifierPattern = @"[A-Z]";
 
-        // original working one that didn't do single letters
-        // const string identifierPattern = @"^[A-Z]\w|\$";
+       
         private const string floatPattern = @"^-?\d+\.\d+$";
 
         private const string integerPattern = @"^-?\d+$";
@@ -70,7 +69,7 @@ namespace JenPile {
                             } else if (integerRgx.IsMatch(tokenToEval)) {
                                 type = TokenType.INTEGER;
                             } else if (identifierRgx.IsMatch(tokenToEval)) {
-                                //symbolTbl.AddToTable(tokenToEval);
+                                
                                 type = TokenType.IDENTIFIER;
                             } else {
                                 // Should throw an error if this hits
@@ -79,13 +78,13 @@ namespace JenPile {
 
                             tokens.Add(new Token(type, tokenToEval));
                         }
-                        // Trying this for part 2 AND IT WORKS!
+                        
                         if (operatorRgx.IsMatch(c.ToString())) {
                             tokens.Add(new Token(TokenType.OPERATOR, c.ToString()));
                         } else {
                             tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
                         }
-                        //tokens.Add(new Token(TokenType.SEPARATOR, c.ToString()));
+                       
                         evalLine.Clear();
                     } else {
                         evalLine.Append(c);
